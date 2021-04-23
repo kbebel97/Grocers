@@ -1,1 +1,41 @@
-<p>edit works!</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Employee Edit</title>
+        <style>
+            form {
+                border-style: double;
+                height: 80%;
+                margin: 1% 1% 1% 1%;
+                padding: 1%;
+            }
+        </style>
+	</head>
+	
+	<body>
+
+        <form>
+            <h1><b>Edit Employee</b></h1>
+            <h3>
+                Current Password
+                <br/>
+                <input type="password" id="currPass" required/>
+            </h3>
+            <h3>
+                New Password
+                <br/>
+                <input type="password" id="newPass" required/>
+            </h3>
+            <h3>
+                Confirm Password
+                <br/>
+                <input type="password" id="confNewPass" required/>
+            </h3>
+            <input type="reset" value="Clear"/>
+            <input type="button" value="Reset Password" onclick="resetPassword()"/>
+        </form>
+	</body>
+</html>
