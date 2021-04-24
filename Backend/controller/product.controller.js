@@ -14,4 +14,14 @@ let sample = (req, res, next) => {
     });
 }
 
-module.exports={sample};
+let getProducts = (req, res, next) =>{
+    ProductModel.find()
+        .then(results =>{
+            return res.json({products: results});
+        });
+}
+
+module.exports={
+    sample,
+    getProducts
+};
