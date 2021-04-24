@@ -13,6 +13,9 @@ var Admin = require("./router/admin.router.js");
 //Database URL Details 
 let url = "mongodb://localhost:27017/grocers";
 
+//Cloud DB URL Details 
+let cloudURL = 'mongodb+srv://Kacper:F3RnoSvralxtB4Ba@cluster0.of3ng.mongodb.net/grocers?retryWrites=true&w=majority';
+
 //middleware enable data from post method.
 app.use(bodyParser.urlencoded({extended:true}));    // enable body part data  
 app.use(bodyParser.json());                         // json data. 
@@ -23,7 +26,16 @@ const mongooseDbOption ={                           // to avoid warning
     useNewUrlParser: true,
     useUnifiedTopology: true
 }
-mongoose.connect(url,mongooseDbOption);             //ready to connect 
+//Connect to localDB
+// mongoose.connect(url,mongooseDbOption);             //ready to connect 
+
+//Connect to cloud DB
+mongoose.connect(cloudURL).then(() => {
+    console.log('Connected to DB');
+})
+.catch(()=> {
+    console.log('Connection failed!');
+})
 
 //Connect the data 
 mongoose.connection
