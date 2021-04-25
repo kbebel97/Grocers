@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './employee/nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,7 +30,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FormsModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

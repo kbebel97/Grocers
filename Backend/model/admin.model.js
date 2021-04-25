@@ -4,15 +4,12 @@ const uniqueValidator = require("mongoose-unique-validator");
 //Unique in this case does not validate input, it is used internally by mongoose for
 //optimization purposes
 //For that we install npm install --save mongoose-unique-validator
-const adminSchema = mongoose.Schema({
-  email: { type: String, required: true, unique: true},
-  userName: { type: String, required: true, unique: true},
-  password: { type: String, required: true},
-  firstName: { type: String, required: true},
-  lastName: { type: String, required: true}
+const AdminSchema = mongoose.Schema({
+    _id: Number,
+    username: String,
+    userId: String,
+    password: String
 });
 
-//Unique validator does this
-adminSchema.plugin(uniqueValidator);
-
-module.exports = mongoose.model("Admin", adminSchema);
+let AdminModel = mongoose.model("", AdminSchema, "admins");
+module.exports = AdminModel
