@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
         })
 
         if (this.loginSuccess) {
-          this.router.navigate(['./employeePortal']);
+          this.router.navigate(['./employeePortal/orders']);
           console.log("Welcome to employee portal");
         } else {
           this.message = "Please enter the correct details";
