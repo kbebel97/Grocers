@@ -5,6 +5,7 @@ let UserController = require("../controller/user.controller.js");
 //mapping sub path with http methods.
 router.post("/login",UserController.login);
 router.post("/signup",UserController.signup); 
-router.get("/", UserController.test); 
+router.get("/", UserController.test);
+router.get("/allUserDetails", UserController.getAllUserDetails);
 
 module.exports=router;

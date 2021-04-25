@@ -69,4 +69,13 @@ let login = (req, res, next) => {
     //   })
   }
 
-module.exports={login,signup};
+let getAllEmploeeDetails = (req, res) => {
+    EmployeeModel.find({}, (err, result) => {
+        if (!err) {
+            res.json(result);
+        }
+    })
+
+}
+
+module.exports = { login, signup, getAllEmploeeDetails};

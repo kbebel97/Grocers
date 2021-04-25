@@ -69,4 +69,15 @@ let login = (req, res, next) => {
     //   })
   }
 
-module.exports={login,signup};
+//Retrieve all admin details 
+let getAllAdminDetails = (req, res) => {
+
+    AdminModel.find({}, (err, result) => {
+        if (!err) {
+            res.json(result);
+        }
+    })
+
+}
+
+module.exports = { login, signup, getAllAdminDetails};

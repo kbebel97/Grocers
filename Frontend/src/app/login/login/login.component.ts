@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
+import { Admin } from 'src/app/models/model.admin';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,15 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public loginService: LoginService) { }
 
   userName: any;
   password: any;
+  adminDetails?: any;
+  userDetails?: any;
+  employeeDetails?: any;
+  message: String;
+  loginSuccess: Boolean = false;
 
   ngOnInit(): void {
   }
@@ -23,32 +30,89 @@ export class LoginComponent implements OnInit {
     let role = loginRef.role;
 
     if (role == "User") {
-      if (userName == "user" && password == "user123") {
-        console.log("Entering the User portal")
-        //Call User landing page like admin
-      } else {
-        console.log("Please enter the correct details")
-      } 
+
+      this.loginService.retrieveAllUserDetails().subscribe(result => {
+        this.userDetails = result;
+        console.log(this.userDetails);
+        let keepChecking = true;
+        this.userDetails.forEach(data => {
+          if (keepChecking) {
+            if (userName == data.username && password == data.password) {
+              this.loginSuccess = true;
+              keepChecking = false;
+            } else {
+              this.loginSuccess = false;
+            }
+          }
+        })
+
+        if (this.loginSuccess) {
+          //Give the routing path of user 
+          console.log("Welcome to user portal");
+        } else {
+          this.message = "Please enter the correct details";
+        }
+
+      });
+
     } else if (role == "Admin") {
-      if (userName == "admin" && password == "admin123") {
-        console.log("Entering the Admin portal")
-        this.router.navigate(['./adminPortal']);     
-      } else {
-        console.log("Please enter the correct details")
-      }      
+
+      this.loginService.retrieveAllAdminDetails().subscribe(result => {
+        this.adminDetails = result;
+        console.log(this.adminDetails);
+        let keepChecking = true;
+        this.adminDetails.forEach(data => {
+          if (keepChecking) {
+            if (userName == data.username && password == data.password) {
+              this.loginSuccess = true;
+              keepChecking = false;
+            } else {
+              this.loginSuccess = false;
+            }
+          }
+        })
+
+        if (this.loginSuccess) {
+          this.router.navigate(['./adminPortal']);
+        } else {
+          this.message = "Please enter the correct details";
+        }
+
+      });
+      
     } else if (role == "Employee") {
-      if (userName == "employee" && password == "employee123") {
-        //Call User employee page like admin
-        console.log("Entering the Employee portal")
-      } else {
-        console.log("Please enter the correct details")
-      } 
+
+      this.loginService.retrieveAllEmployeeDetails().subscribe(result => {
+        this.employeeDetails = result;
+        console.log(this.employeeDetails);
+        let keepChecking = true;
+        this.employeeDetails.forEach(data => {
+          if (keepChecking) {
+            if (userName == data.username && password == data.password) {
+              this.loginSuccess = true;
+              keepChecking = false;
+            } else {
+              this.loginSuccess = false;
+            }
+          }
+        })
+
+        if (this.loginSuccess) {
+          //Give the routing path of employee 
+          console.log("Welcome to employee portal");
+        } else {
+          this.message = "Please enter the correct details";
+        }
+
+      });
+
     } else {
-      console.log("Please select appropriate role")
+      this.message = "Please select appropriate role";
     }
 
     this.userName = "";
     this.password = "";
   }
+
 
 }
