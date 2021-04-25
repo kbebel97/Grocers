@@ -7,7 +7,11 @@ import { UnlockComponent } from './employee/unlock/unlock.component';
 import { OrdersComponent } from './employee/orders/orders.component';
 import { LoginComponent } from './login/login/login.component';
 import { AdminPortalComponent } from './admin/admin-portal/admin-portal.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavComponent } from './employee/nav/nav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 
 @NgModule({
@@ -17,12 +21,16 @@ import { FormsModule } from '@angular/forms';
     UnlockComponent,
     OrdersComponent,
     LoginComponent,
-    AdminPortalComponent
+    AdminPortalComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

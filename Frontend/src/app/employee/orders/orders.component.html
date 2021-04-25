@@ -1,1 +1,58 @@
-<p>orders works!</p>
+<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<table style=" display: flex; flex-flow: column;">
+  <thead>
+    <tr class="row" style="padding-top: 20px; padding-bottom: 20px; padding-right: 16px; background-color: seashell; border-bottom: 3px solid black; margin: 0; height: inherit;">
+      <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Order ID</div></th>
+      <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Email</div></th>
+      <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Username</div></th>
+      <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Items</div></th>
+      <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;">
+        <form [formGroup]="searchRef" class="example" (ngSubmit)="search()">
+          <input type="text" placeholder="Email Search" formControlName="email" >
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </th>
+    </tr>
+  </thead>
+  <tbody id="tbody" style="flex-grow : 1; overflow-y: scroll; display:block" >
+    <tr class="row" *ngFor="let order of orders; let i = index" style="width: 100%; border: none; outline: none; padding: 0;" style="padding-top: 10px; padding-bottom: 10px; margin: 0;" [ngStyle]="{backgroundColor: i % 2 !== 0 ? 'rgba(226, 248, 231, 0.97)' : 'rgba(190, 239, 200, 0.97)'}" #tbody>
+      <th class="col" style="padding: 0; text-align: center; display: block; width: 20px; word-wrap: break-word; margin: auto;"><div>{{order._id}}</div></th>
+      <th class="col" style="padding: 0; text-align: center; display: block; width: 20px; word-wrap: break-word; margin: auto;"><div>{{order.email}}</div></th>
+      <th class="col" style="padding: 0; text-align: center; display: block; width: 20px; word-wrap: break-word; margin: auto;"><div>{{order.userName}}</div></th>
+
+      <th class="col" style="padding: 0; text-align: center; display: block; width: 20px; word-wrap: break-word; margin: auto;">
+        <div class="dropdown">
+          <button class="dropbtn">Items</button>
+          <div [ngClass]="{'dropdown-content': (orders.length * 72 - i * 72) >= 262 || i < 4, 'dropup-content': (orders.length * 72 - i * 72) < 262 && i >= 4}">
+            <a *ngFor="let oi of order.orderItems">
+                <div style="flex: 1">Product: {{oi.product.name}}</div>
+                <div style="flex: 1">Price: ${{oi.product.price}}</div>
+                <div style="flex: 1">Qty: {{oi.Quantity}}</div>
+            </a>
+          </div>
+        </div>
+      </th>
+
+      <!-- <th class="col" style="padding: 0; text-align: center; display: block; width: 20px; word-wrap: break-word; margin: auto;" *ngIf="(orders.length * 72 - i * 72) <= 262">
+        <div class="dropup">
+          <button class="dropbtn-up">Items</button>
+          <div class="dropup-content">
+            <a *ngFor="let oi of order.orderItems">
+                <div style="flex: 1">Product: {{oi.product.name}}</div>
+                <div style="flex: 1">Price: ${{oi.product.price}}</div>
+                <div style="flex: 1">Qty: {{oi.Quantity}}</div>
+            </a>
+          </div>
+        </div>
+      </th> -->
+      <th class="col" style="padding: 0; text-align: center; display: block; width: 20px; word-wrap: break-word; margin: auto;"><div>{{order.userName}}</div></th>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="row" style="padding-top: 20px; padding-bottom: 20px; background-color: seashell; border-top: 3px solid black; margin: 0; height: inherit;">
+      <div style="display: flex; justify-content: flex-end; width: 100%; padding-right: 20px;"><button class="btn btn-primary" style="width: fit-content;">Update Orders</button></div>
+    </tr>
+  </tfoot>
+</table>
+

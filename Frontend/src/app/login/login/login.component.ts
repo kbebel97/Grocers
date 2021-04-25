@@ -28,21 +28,22 @@ export class LoginComponent implements OnInit {
         //Call User landing page like admin
       } else {
         console.log("Please enter the correct details")
-      } 
+      }
     } else if (role == "Admin") {
       if (userName == "admin" && password == "admin123") {
         console.log("Entering the Admin portal")
-        this.router.navigate(['./adminPortal']);     
+        this.router.navigate(['./adminPortal']);
       } else {
         console.log("Please enter the correct details")
-      }      
+      }
     } else if (role == "Employee") {
       if (userName == "employee" && password == "employee123") {
         //Call User employee page like admin
         console.log("Entering the Employee portal")
+        this.router.navigate(['./employeePortal/orders']);
       } else {
         console.log("Please enter the correct details")
-      } 
+      }
     } else {
       console.log("Please select appropriate role")
     }
