@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         })
 
         if (this.loginSuccess) {
-          //Give the routing path of user 
+          //Give the routing path of user
           console.log("Welcome to user portal");
         } else {
           this.message = "Please enter the correct details";
@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
         }
 
       });
-      
+
     } else if (role == "Employee") {
 
       this.loginService.retrieveAllEmployeeDetails().subscribe(result => {
@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
         })
 
         if (this.loginSuccess) {
-          //Give the routing path of employee 
+          this.router.navigate(['./employeePortal/orders']);
           console.log("Welcome to employee portal");
         } else {
           this.message = "Please enter the correct details";
