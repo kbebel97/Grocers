@@ -12,6 +12,13 @@ import { NavComponent } from './employee/nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
+import { AddEmployeeComponent } from './admin/add-employee/add-employee.component';
+import { DeleteEmployeeComponent } from './admin/delete-employee/delete-employee.component';
+import { AddProductsComponent } from './admin/add-products/add-products.component';
+import { DeleteProductsComponent } from './admin/delete-products/delete-products.component';
+import { UpdateProductsComponent } from './admin/update-products/update-products.component';
+import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
+import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
 
 
 @NgModule({
@@ -22,7 +29,14 @@ import { HttpClientModule } from '@angular/common/http';
     OrdersComponent,
     LoginComponent,
     AdminPortalComponent,
-    NavComponent
+    NavComponent,
+    AddEmployeeComponent,
+    DeleteEmployeeComponent,
+    AddProductsComponent,
+    DeleteProductsComponent,
+    UpdateProductsComponent,
+    ViewRequestsComponent,
+    GenerateReportsComponent
   ],
   imports: [
     BrowserModule,
