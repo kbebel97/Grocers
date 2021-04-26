@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Employee</title>
+  <style>
+    form {
+      border-style: double;
+      height: 80%;
+      margin: 1% 1% 1% 1%;
+      padding: 1%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form #employeeRef="ngForm" (ngSubmit)="addEmployee(employeeRef.value)">
+    <h1><b>Add Employee</b></h1>
+    <h3>
+      Email
+      <br />
+      <input type="text" name="email" [(ngModel)]="email" required />
+    </h3>
+    <h3>
+      Username
+      <br />
+      <input type="text" name="userName" [(ngModel)]="userName" required />
+    </h3>
+    <h3>
+      Password
+      <br />
+      <input type="password" name="password" [(ngModel)]="password" required />
+    </h3>
+    <h3>
+      First Name
+      <br />
+      <input type="text" name="firstName" [(ngModel)]="firstName" required />
+    </h3>
+    <h3>
+      Last Name
+      <br />
+      <input type="text" name="lastName" [(ngModel)]="lastName" required />
+    </h3>
+    <input type="reset" value="Clear" />
+    <input type="submit" value="Add Employee" />
+  </form>
+</body>
+</html>
