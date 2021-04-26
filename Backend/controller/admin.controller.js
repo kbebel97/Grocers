@@ -1,4 +1,5 @@
 let AdminModel = require("../model/admin.model.js");
+let EmployeeModel = require("../model/employee.model.js");
 const bcrypt = require("bcrypt");
 
 let signup = (req, res, next) => {
@@ -80,4 +81,45 @@ let getAllAdminDetails = (req, res) => {
 
 }
 
-module.exports = { login, signup, getAllAdminDetails};
+//Add new employees
+let addEmployeeDetails = (req, res) => {
+
+    let employee = new EmployeeModel({
+        email: req.body.email,
+        userName: req.body.userName,
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        employeeId: req.body.employeeId
+            
+    });
+
+    employee.save((err, result) => {
+        if (!err) {
+            res.send("Record stored successfully ")
+            //res.json({"msg":"Record stored successfully"})
+        } else {
+            res.send("Record didn't store ");
+        }
+    })
+}
+
+//Delete an employee
+let deleteEmployeeById = (req, res) => {
+    let email = req.params.email;
+    EmployeeModel.deleteOne({ employeeId: email }, (err, result) => {
+        if (!err) {
+            if (result.deletedCount > 0) {
+                res.send("Record deleted successfully")
+            } else {
+                res.send("Record not present");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
+
+}
+
+
+module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeById};
