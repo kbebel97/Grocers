@@ -106,9 +106,9 @@ let addEmployeeDetails = (req, res) => {
 }
 
 //Delete an employee
-let deleteEmployeeById = (req, res) => {
+let deleteEmployeeByEmail = (req, res) => {
     let email = req.params.email;
-    EmployeeModel.deleteOne({ employeeId: email }, (err, result) => {
+    EmployeeModel.deleteOne({ email: email }, (err, result) => {
         if (!err) {
             if (result.deletedCount > 0) {
                 res.send("Record deleted successfully")
@@ -180,4 +180,6 @@ let updateProductPrice= (req,res)=> {
 
 
 
-module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeById, addProductDetails, deleteProductByName,updateProductPrice};
+
+module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeByEmail, addProductDetails, deleteProductByName,updateProductPrice};
+
