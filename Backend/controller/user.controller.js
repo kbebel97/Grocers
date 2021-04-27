@@ -30,7 +30,7 @@ let signup = (req, res, next) => {
 let login = (req, res, next) => {
     let fetchedUser;
     // attempt to find user
-    UserModel.findOne({ email: req.body.email })
+  UserModel.findOne({ userName: req.body.userName })
       .then(user => {
         // throws error if user not found by userName
         if(!user){
