@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
         })
 
         if (this.loginSuccess) {
-          this.router.navigate(['./adminPortal']);
+          this.router.navigate(['./adminPortal/addProducts']);
         } else {
           this.message = "Please enter the correct details";
         }
@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
         let keepChecking = true;
         this.employeeDetails.forEach(data => {
           if (keepChecking) {
-            if (userName == data.username && password == data.password) {
+            if (userName == data.userName && password == data.password) {
               this.loginSuccess = true;
               keepChecking = false;
             } else {
