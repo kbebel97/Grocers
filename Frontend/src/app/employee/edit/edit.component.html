@@ -17,25 +17,33 @@
 	
 	<body>
 
-        <form>
+        <form #empRef="ngForm" (ngSubmit)="resetPassword(empRef.value)">
             <h1><b>Edit Employee</b></h1>
+            <h3>
+                Username
+                <br/>
+                <input type="text" name="name" [(ngModel)]="name" required/>
+            </h3>
             <h3>
                 Current Password
                 <br/>
-                <input type="password" id="currPass" required/>
+                <input type="password" name="currentPassword" [(ngModel)]="currentPassword" required/>
             </h3>
             <h3>
                 New Password
                 <br/>
-                <input type="password" id="newPass" required/>
+                <input type="password" name="newPassword" [(ngModel)]="newPassword" required/>
             </h3>
             <h3>
                 Confirm Password
                 <br/>
-                <input type="password" id="confNewPass" required/>
+                <input type="password" name="newPassword2" [(ngModel)]="newPassword2" required/>
             </h3>
             <input type="reset" value="Clear"/>
-            <input type="button" value="Reset Password" onclick="resetPassword()"/>
+            <input type="submit" value="Reset Password"/>
+            <div>
+                {{message}}
+            </div>
         </form>
 	</body>
 </html>

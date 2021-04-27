@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditService } from './edit.service';
 
 @Component({
   selector: 'app-edit',
@@ -7,12 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
-  constructor() { }
+  name:any;
+  currentPassword:any;
+  newPassword:any;
+  newPassword2:any;
+  message:any;
+
+  constructor(public editService: EditService) { }
 
   ngOnInit(): void {
   }
 
-  resetPassword() {
+  resetPassword(empRef: any) {
+    console.log(empRef);
+    this.editService.updateEmployeePassword(empRef).subscribe((result:string)=> {
+      this.message=result;
+    });
+    this.name = "";
+    this.currentPassword = "";
+    this.newPassword = "";
+    this.newPassword2 = "";
     // Get current password id:currPass
     // Get new password id:newPass
     // Get confirmation id:confNewPass

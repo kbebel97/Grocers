@@ -19,6 +19,7 @@ import { DeleteProductsComponent } from './admin/delete-products/delete-products
 import { UpdateProductsComponent } from './admin/update-products/update-products.component';
 import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
+import { RequestComponent } from './employee/request/request.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { GenerateReportsComponent } from './admin/generate-reports/generate-repo
     DeleteProductsComponent,
     UpdateProductsComponent,
     ViewRequestsComponent,
-    GenerateReportsComponent
+    GenerateReportsComponent,
+    RequestComponent
   ],
   imports: [
     BrowserModule,

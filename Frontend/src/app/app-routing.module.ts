@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminPortalComponent } from './admin/admin-portal/admin-portal.component';
+import { RequestComponent } from './employee/request/request.component';
 import { EditComponent } from './employee/edit/edit.component';
 import { NavComponent } from './employee/nav/nav.component';
 import { OrdersComponent } from './employee/orders/orders.component';
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: "\employeePortal", component: NavComponent, children: [
     { path: 'orders', component: OrdersComponent },
     { path: 'unlock', component: UnlockComponent },
-    { path: 'edit' , component: EditComponent }
+    { path: 'edit' , component: EditComponent },
+    { path: 'request' , component: RequestComponent }
   ]},
   { path: "", redirectTo: "\login", pathMatch: "full" }
 ];
