@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -12,14 +13,16 @@ export class AddEmployeeComponent implements OnInit {
   password: any;
   firstName: any;
   lastName: any;
+  message: any;
 
-  constructor() { }
+  constructor(public adminService: AdminService) { }
 
   ngOnInit(): void {
   }
 
   addEmployee(employeeRef: any) {
     console.log(employeeRef);
+    this.adminService.storeEmployeeDetailsInfo(employeeRef).subscribe(result => this.message = result,error => this.message = error);
 
     this.email = "";
     this.userName = "";
