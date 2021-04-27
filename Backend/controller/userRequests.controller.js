@@ -6,7 +6,8 @@ let postRequest = (req, res, next) => {
         userName : req.body.userName,
         email : req.body.email,
         description: req.body.description,
-        status: req.body.status
+        status: req.body.status,
+        date: req.body.date
     });
     userRequest.save().then(userRequest => {
         res.status(201).json({
@@ -22,10 +23,10 @@ let postRequest = (req, res, next) => {
 }
 
 let getRequests = (req, res, next) => {
-    UserRequestsModel.find({}).then((userRequest)=> {
+    UserRequestsModel.find({}).then((userRequests)=> {
         res.status(201).json({
             message: 'UserRequests Fetched!',
-            userRequests: userRequest
+            userRequests: userRequests
           });
     })
     .catch(err => {
