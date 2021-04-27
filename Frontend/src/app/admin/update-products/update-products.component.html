@@ -1,1 +1,39 @@
-<p>update-products works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Products</title>
+  <style>
+    form {
+      border-style: double;
+      height: 80%;
+      margin: 1% 1% 1% 1%;
+      padding: 1%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form #updateRef="ngForm" (ngSubmit)="updateProduct(updateRef.value)">
+    <h1><b>Update Products</b></h1>
+    <h3>
+     Name
+      <br />
+      <input type="text" name="name" [(ngModel)]="name" required />
+    </h3>
+    <h3>
+      Price
+      <br />
+      $ <input type="number" name="price" [(ngModel)]="price" required />
+    </h3>
+    <input type="reset" value="Clear" />
+    <input type="submit" value="Update Product" />
+    <div>
+      {{message}}
+    </div>
+  </form>
+</body>
+</html>
