@@ -31,7 +31,7 @@ const mongooseDbOption ={                           // to avoid warning
 // mongoose.connect(url,mongooseDbOption);             //ready to connect 
 
 //Connect to cloud DB
-mongoose.connect(url).then(() => {//shamanthaka changed to local db connection
+mongoose.connect(cloudURL).then(() => {//shamanthaka changed to local db connection
     console.log('Connected to DB');
 })
 .catch(()=> {
