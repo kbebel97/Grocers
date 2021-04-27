@@ -6,5 +6,6 @@ let EmployeeController = require("../controller/employee.controller.js");
 router.post("/login",EmployeeController.login);
 router.post("/signup", EmployeeController.signup);
 router.get("/allEmployeeDetails", EmployeeController.getAllEmploeeDetails);
+router.put("/updateEmployeePassword", EmployeeController.updateEmployeePassword);
 
 module.exports=router;

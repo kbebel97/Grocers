@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Employee Edit</title>
+        <style>
+            form {
+                border-style: double;
+                height: 80%;
+                margin: 1% 1% 1% 1%;
+                padding: 1%;
+            }
+        </style>
+	</head>
+	
+	<body>
+
+        <form #productRef="ngForm" (ngSubmit)="submitRequest(productRef.value)">
+            <h1><b>Submit Product Requesst</b></h1>
+            <h3>
+                Product ID
+                <br/>
+                <input type="text" name="productID" required/>
+            </h3>
+            <h3>
+                Item Quantity
+                <br/>
+                <input type="number" name="quantity" required/>
+            </h3>
+            <h3>
+                Description
+                <br/>
+                <input type="text" name="description" rows="4" required/>
+            </h3>
+
+            <input type="reset" value="Clear"/>
+            <input type="submit" value="Submit Request"/>
+        </form>
+        <table>
+            <tr>
+                <th>Product ID</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </table>
+	</body>
+</html>
