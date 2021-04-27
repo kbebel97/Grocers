@@ -1,6 +1,4 @@
-tr:hover{
-  background: white;
-}
+
 
 table{
   height: calc(100% - 77px);
@@ -9,6 +7,9 @@ table{
   box-sizing: border-box;
 }
 
+#foot{
+  padding-top: 20px; padding-bottom: 20px; background-color: seashell; border-top: 3px solid black; margin: 0; height: inherit;
+}
 /* Style the search field */
 form.example input[type=text] {
   padding: 10px;
@@ -83,7 +84,6 @@ form.example::after {
   text-decoration: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   column-gap: 10px;
   width: 100%;
 }
@@ -95,7 +95,6 @@ form.example::after {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  column-gap: 10px;
   width: 100%;
 }
 
@@ -113,9 +112,11 @@ form.example::after {
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 
-
-/* .dropup-content a:hover {background-color: #ddd;}
-
-.dropup:hover .dropup-content {display: block; max-height: 200px; height: fit-content; overflow-y: auto;}
-
-.dropup:hover .dropbtn {background-color: #3e8e41;} */
+@media only screen and (max-width: 1140px) {
+  .dropdown-content{
+    right: 0;
+    }
+  .dropup-content{
+    right: 0;
+  }
+}
