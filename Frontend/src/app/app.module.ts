@@ -8,6 +8,11 @@ import { OrdersComponent } from './employee/orders/orders.component';
 import { LoginComponent } from './login/login/login.component';
 import { AdminPortalComponent } from './admin/admin-portal/admin-portal.component';
 import { FormsModule } from '@angular/forms';
+import { NavComponent } from './nav/nav/nav.component';
+import { ProductListComponent } from './products/product-list/product-list.component'
+import { ProductAddComponent } from './products/product-add/product-add.component';
+import { ProductEditComponent } from './products/product-edit/product-edit.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,12 +22,17 @@ import { FormsModule } from '@angular/forms';
     UnlockComponent,
     OrdersComponent,
     LoginComponent,
-    AdminPortalComponent
+    AdminPortalComponent,
+    NavComponent,
+    ProductListComponent,
+    ProductAddComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

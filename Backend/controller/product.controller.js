@@ -1,11 +1,12 @@
 let ProductModel = require("../model/product.model.js");
 
-let sample = (req, res, next) => {
+let save = (req, res, next) => {
 
     const product = new ProductModel({
         name: req.body.name,
         price: req.body.price,
-        description: req.body.description
+        description: req.body.description,
+        imageUrl: req.body.imageUrl
     });
     console.log(product);
     product.save();
@@ -22,6 +23,6 @@ let getProducts = (req, res, next) =>{
 }
 
 module.exports={
-    sample,
+    save,
     getProducts
 };

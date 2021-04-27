@@ -1,6 +1,6 @@
 <html>
 <body>
-  <div class="col-sm-10" id="main">
+  <div class="login-form" id="main">
     <h2>Welcome To Grocers</h2>
     <form #userRef="ngForm" (ngSubmit)="checkUser(userRef.value)">
       <label>Username: </label>
@@ -13,8 +13,8 @@
         <option value="Employee">Employee</option>
         <option value="Admin">Admin</option>
       </select><br />
-      <input type="submit" class="btn btn-light" value="Log In" />
-      <input type="button" class="btn btn-light" value="Sign Up" />
+      <input type="submit" class="btn" value="Log In" />
+      <input type="button" class="btn" value="Sign Up" />
     </form>
     <br>
   </div>
