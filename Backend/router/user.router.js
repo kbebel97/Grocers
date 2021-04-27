@@ -8,4 +8,8 @@ router.post("/signup",UserController.signup);
 router.get("/", UserController.test);
 router.get("/allUserDetails", UserController.getAllUserDetails);
 
+//look for userId and execute the userById method
+//any route containing :userId, our app will first execute userById() method
+router.param("userId", userById);
+
 module.exports=router;

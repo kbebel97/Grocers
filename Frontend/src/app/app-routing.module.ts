@@ -7,6 +7,9 @@ import { NavComponent } from './employee/nav/nav.component';
 import { OrdersComponent } from './employee/orders/orders.component';
 import { UnlockComponent } from './employee/unlock/unlock.component';
 import { LoginComponent } from './login/login/login.component';
+import {ProductAddComponent} from './products/product-add/product-add.component';
+import { ProductListComponent } from './products/product-list/product-list.component'
+
 import { AddEmployeeComponent } from './admin/add-employee/add-employee.component';
 import { AddProductsComponent } from './admin/add-products/add-products.component';
 import { DeleteProductsComponent } from './admin/delete-products/delete-products.component';
@@ -16,6 +19,8 @@ import { DeleteEmployeeComponent } from './admin/delete-employee/delete-employee
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
 
 const routes: Routes = [
+  {path: "prodAdd", component: ProductAddComponent},
+  {path: "prodList", component: ProductListComponent},
   { path: "\login", component: LoginComponent },
   {
     path: "\adminPortal", component: AdminPortalComponent, children: [

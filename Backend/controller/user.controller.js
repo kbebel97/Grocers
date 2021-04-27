@@ -8,7 +8,7 @@ let signup = (req, res, next) => {
         const User = new UserModel({
           email: req.body.email,
           password: hash,
-          userName: req.body.userName,
+          //userName: req.body.userName,
           firstName: req.body.firstName,
           lastName: req.body.lastName
         });
@@ -30,7 +30,7 @@ let signup = (req, res, next) => {
 let login = (req, res, next) => {
     let fetchedUser;
     // attempt to find user
-    UserModel.findOne({ userName: req.body.userName })
+  UserModel.findOne({ userName: req.body.userName })
       .then(user => {
         // throws error if user not found by userName
         if(!user){
@@ -84,4 +84,17 @@ let test = (req, res, next) => {
   res.status(200).json({hello: "hello"});
 }
 
-module.exports = { login, signup, test, getAllUserDetails};
+let userById = (req, res, next, id) => {
+  User.findById(id)
+      .exec((err, user) => {
+          if(err || !user){
+              return res.status(400).json({
+                  error: "user not found"
+              });
+          }
+          req.profile = user //adds profile object in req object with user info
+          next();
+      });
+}
+
+module.exports = { login, signup, test, getAllUserDetails, userById};
