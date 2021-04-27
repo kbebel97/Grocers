@@ -7,13 +7,25 @@ import { UnlockComponent } from './employee/unlock/unlock.component';
 import { OrdersComponent } from './employee/orders/orders.component';
 import { LoginComponent } from './login/login/login.component';
 import { AdminPortalComponent } from './admin/admin-portal/admin-portal.component';
-import { FormsModule } from '@angular/forms';
+
 import { NavComponent } from './nav/nav/nav.component';
 import { ProductListComponent } from './products/product-list/product-list.component'
 import { ProductAddComponent } from './products/product-add/product-add.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavComponent } from './employee/nav/nav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AddEmployeeComponent } from './admin/add-employee/add-employee.component';
+import { DeleteEmployeeComponent } from './admin/delete-employee/delete-employee.component';
+import { AddProductsComponent } from './admin/add-products/add-products.component';
+import { DeleteProductsComponent } from './admin/delete-products/delete-products.component';
+import { UpdateProductsComponent } from './admin/update-products/update-products.component';
+import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
+import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { RequestComponent } from './employee/request/request.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +39,24 @@ import { HttpClientModule } from '@angular/common/http';
     ProductListComponent,
     ProductAddComponent,
     ProductEditComponent
+    AddEmployeeComponent,
+    DeleteEmployeeComponent,
+    AddProductsComponent,
+    DeleteProductsComponent,
+    UpdateProductsComponent,
+    ViewRequestsComponent,
+    GenerateReportsComponent,
+    RequestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

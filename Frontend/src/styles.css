@@ -72,10 +72,6 @@ form {
   color: #ffeb3b;
 }
 
-
-
-
-
 .form-control {
     margin: 1rem 0;
 }
@@ -100,5 +96,5 @@ form {
     outline-color: #00695c;
 }
 
-
-
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

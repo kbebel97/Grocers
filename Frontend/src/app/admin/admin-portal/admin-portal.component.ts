@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-portal',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPortalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  goToAddEmployeeComponent() {
+    console.log("In add employee component");
+    this.router.navigate(['./adminPortal/addEmployees']);
+  }
+
+  goToDeleteEmployeeComponent() {
+    console.log("In delete employee component");
+    
+  }
 }

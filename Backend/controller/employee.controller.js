@@ -69,4 +69,83 @@ let login = (req, res, next) => {
     //   })
   }
 
-module.exports={login,signup};
+let getAllEmploeeDetails = (req, res) => {
+    EmployeeModel.find({}, (err, result) => {
+        if (!err) {
+            res.json(result);
+        }
+    })
+
+}
+
+let updateEmployeePassword = (req, res) => {
+  let name = req.body.name;
+  let newPassword = req.body.newPassword;
+
+  /*
+  let fetchedEmployee;
+  EmployeeModel.findOne({ userName: name })
+    .then( employee => {
+      if (!employee) {
+        res.send("Employee does not exist");
+      } else {
+        fetchedEmployee = employee;
+        
+        bcrypt.compare(req.body.currentPassword, employee.password).then( (result) => {
+          if (result) {
+            if (req.body.newPassword == req.body.newPassword2) {
+              EmployeeModel.updateOne({userName:name},{$set:{password:newPassword}},(err,result)=> {
+                if(!err){
+                    if(result.nModified>0){
+                            res.send("Password updated succesfully")
+                    }else {
+                            res.send("Record is not available");
+                    }
+                    return res;
+                }else {
+                    res.send("Error generated "+err);
+                }
+              });
+            } else {
+              res.send("New passwords do not match");
+            }
+          } else {
+            res.send("Password is incorrect");
+          }
+        });
+      }
+    });
+    */
+  let fetchedEmployee;
+  EmployeeModel.findOne({ userName: name })
+    .then( employee => {
+      if (!employee) {
+        res.send("Employee does not exist");
+      } else {
+        fetchedEmployee = employee;
+
+        if (req.body.currentPassword == employee.password) {
+          if (req.body.newPassword == req.body.newPassword2) {
+            EmployeeModel.updateOne({userName:name},{$set:{password:newPassword}},(err,result)=> {
+              if(!err){
+                  if(result.nModified>0){
+                          res.send("Password updated succesfully")
+                  }else {
+                          res.send("Record is not available");
+                  }
+                  return res;
+              }else {
+                  res.send("Error generated "+err);
+              }
+            });
+          } else {
+            res.send("New passwords do not match");
+          }
+        } else {
+          res.send("Password is incorrect");
+        }
+      }
+    });
+}
+
+module.exports = { login, signup, getAllEmploeeDetails, updateEmployeePassword};

@@ -68,13 +68,23 @@ let login = (req, res, next) => {
       //     message: "Auth failed"
       //   });
       // })
-  }
+}
+
+let getAllUserDetails = (req, res) => {
+
+    UserModel.find({}, (err, result) => {
+        if (!err) {
+            res.json(result);
+        }
+    })
+
+}
 
 let test = (req, res, next) => {
   res.status(200).json({hello: "hello"});
 }
 
-userById = (req, res, next, id) => {
+let userById = (req, res, next, id) => {
   User.findById(id)
       .exec((err, user) => {
           if(err || !user){
@@ -87,4 +97,4 @@ userById = (req, res, next, id) => {
       });
 }
 
-module.exports={login,signup,userById, test};
+module.exports = { login, signup, test, getAllUserDetails, userById};
