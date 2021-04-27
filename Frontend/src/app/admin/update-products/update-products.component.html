@@ -29,19 +29,11 @@
       <br />
       $ <input type="number" name="price" [(ngModel)]="price" required />
     </h3>
-    <h3>
-      Quantity
-      <br />
-      <input type="number" name="quantity" [(ngModel)]="quantity" required />
-    </h3>
-    
-    <h3>
-      Description
-      <br />
-      <input type="text" name="description" [(ngModel)]="description" required />
-    </h3>
     <input type="reset" value="Clear" />
     <input type="submit" value="Update Product" />
+    <div>
+      {{message}}
+    </div>
   </form>
 </body>
 </html>

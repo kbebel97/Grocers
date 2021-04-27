@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-delete-products',
@@ -6,13 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delete-products.component.css']
 })
 export class DeleteProductsComponent implements OnInit {
+
 name:any;
-  constructor() { }
+message:any;
+
+  constructor(public adminService: AdminService) { }
 
   ngOnInit(): void {
   }
   deleteProduct(deleteRef: any) {
-    console.log(deleteRef);
+    this.adminService.deleteProductByName(deleteRef.name).subscribe((result: string) => {
+      this.message = result;
+      })
    this.name = "";
   }
 }
