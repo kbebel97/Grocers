@@ -6,7 +6,7 @@ const uniqueValidator = require("mongoose-unique-validator");
 //For that we install npm install --save mongoose-unique-validator
 const orderSchema = mongoose.Schema({
   _userId : { type: String, required: true},
-  date : { type: String, required: true},
+  date : { type: Date, required: true},
   status : { type: String, required: true },
   email: { type: String, required: true},
   userName: { type: String, required: true},

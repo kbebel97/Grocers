@@ -19,6 +19,8 @@ import { DeleteProductsComponent } from './admin/delete-products/delete-products
 import { UpdateProductsComponent } from './admin/update-products/update-products.component';
 import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { GenerateReportsComponent } from './admin/generate-reports/generate-repo
     BrowserAnimationsModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
