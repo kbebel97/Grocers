@@ -5,7 +5,9 @@ let AdminController = require("../controller/admin.controller.js");
 //mapping sub path with http methods.
 router.get("/allAdminDetails", AdminController.getAllAdminDetails);
 router.post("/addEmployeeDetails", AdminController.addEmployeeDetails);
-router.delete("/deleteEmployeeById/:employeeId", AdminController.deleteEmployeeById);
-
+router.delete("/deleteEmployeeById/:employeeId", AdminController.deleteEmployeeById); // employeeId is email of the employee
+router.post("/addProductDetails", AdminController.addProductDetails);
+router.delete("/deleteProductByName/:name",AdminController.deleteProductByName);
+router.put("/updateProductPrice",AdminController.updateProductPrice);
 
 module.exports=router;

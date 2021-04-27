@@ -1,5 +1,6 @@
 let AdminModel = require("../model/admin.model.js");
 let EmployeeModel = require("../model/employee.model.js");
+let ProductModel = require("../model/product.model.js");
 const bcrypt = require("bcrypt");
 
 let signup = (req, res, next) => {
@@ -89,8 +90,8 @@ let addEmployeeDetails = (req, res) => {
         userName: req.body.userName,
         password: req.body.password,
         firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        employeeId: req.body.employeeId
+        lastName: req.body.lastName
+        
             
     });
 
@@ -118,8 +119,65 @@ let deleteEmployeeById = (req, res) => {
             res.send("Error generated " + err);
         }
     })
+}
+	//Add new product
+let addProductDetails = (req, res) => {
 
+    let product = new ProductModel({
+        
+        name: req.body.name,
+        price: req.body.price,
+        quantity: req.body.quantity,
+		description: req.body.description
+        
+        
+            
+    });
+
+    product.save((err, result) => {
+        if (!err) {
+            res.send("Record stored successfully ")
+            //res.json({"msg":"Record stored successfully"})
+        } else {
+            res.send(err);
+        }
+    })
+}
+	//Delete product
+let deleteProductByName = (req, res) => {
+    let name = req.params.name;
+    ProductModel.deleteOne({ name: name }, (err, result) => {
+        if (!err) {
+            if (result.deletedCount > 0) {
+                res.send("Record deleted successfully")
+            } else {
+                res.send("Record not present");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
+}
+//Update product Details
+let updateProductPrice= (req,res)=> {
+    let name = req.body.name;
+    let updatedPrice = req.body.price;
+	
+    ProductModel.updateMany({name:name},{$set:{price:updatedPrice}},(err,result)=> {
+        if(!err){
+            if(result.nModified>0){
+                    res.send("Record updated succesfully")
+            }else {
+                    res.send("Record is not available");
+            }
+        }else {
+            res.send("Error generated "+err);
+        }
+    })
 }
 
 
-module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeById};
+
+
+
+module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeById, addProductDetails, deleteProductByName,updateProductPrice};
