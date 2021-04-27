@@ -19,7 +19,13 @@ import { DeleteProductsComponent } from './admin/delete-products/delete-products
 import { UpdateProductsComponent } from './admin/update-products/update-products.component';
 import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+<<<<<<< HEAD
 import { RequestComponent } from './employee/request/request.component';
+=======
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+>>>>>>> 4d0a1b2626e90cc3fbac0d0ddfc14c4132e014ae
 
 
 @NgModule({
@@ -47,7 +53,8 @@ import { RequestComponent } from './employee/request/request.component';
     BrowserAnimationsModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
