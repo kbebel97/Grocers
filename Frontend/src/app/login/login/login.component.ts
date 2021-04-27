@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   loginSuccess: Boolean = false;
 
   ngOnInit(): void {
+    sessionStorage.loginObject = "";
   }
 
   checkUser(loginRef: any) {
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
           if (keepChecking) {
             if (userName == data.username && password == data.password) {
               this.loginSuccess = true;
+              sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
             } else {
               this.loginSuccess = false;
@@ -65,6 +67,7 @@ export class LoginComponent implements OnInit {
           if (keepChecking) {
             if (userName == data.username && password == data.password) {
               this.loginSuccess = true;
+              sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
             } else {
               this.loginSuccess = false;
@@ -90,6 +93,7 @@ export class LoginComponent implements OnInit {
           if (keepChecking) {
             if (userName == data.userName && password == data.password) {
               this.loginSuccess = true;
+              sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
             } else {
               this.loginSuccess = false;
