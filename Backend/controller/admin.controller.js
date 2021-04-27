@@ -1,6 +1,8 @@
 let AdminModel = require("../model/admin.model.js");
 let EmployeeModel = require("../model/employee.model.js");
 let ProductModel = require("../model/product.model.js");
+let EmployeeRequestsModel = require("../model/employeeRequests.model.js");
+
 const bcrypt = require("bcrypt");
 
 let signup = (req, res, next) => {
@@ -177,9 +179,17 @@ let updateProductPrice= (req,res)=> {
 }
 
 
+let getAllEmployeeRequests = (req, res) => {
+
+    EmployeeRequestsModel.find({}, (err, result) => {
+        if (!err) {
+            res.json(result);
+        }
+    })
+
+}
 
 
 
-
-module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeByEmail, addProductDetails, deleteProductByName,updateProductPrice};
+module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeByEmail, addProductDetails, deleteProductByName, updateProductPrice, getAllEmployeeRequests};
 
