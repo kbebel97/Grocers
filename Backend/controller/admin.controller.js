@@ -130,8 +130,8 @@ let addProductDetails = (req, res) => {
         name: req.body.name,
         price: req.body.price,
         quantity: req.body.quantity,
-		description: req.body.description
-        
+		description: req.body.description,
+        imageUrl: req.body.imageUrl
         
             
     });
