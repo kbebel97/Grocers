@@ -12,7 +12,8 @@ const userSchema = mongoose.Schema({
   firstName: { type: String, required: true},
   lastName: { type: String, required: true},
   paymentMethods: { type: Array, required: false},
-  shippingAddresses: { type: Array, required: false}
+  shippingAddresses: { type: Array, required: false},
+  numAttempts: { type: Number, required: false}
 });
 
 //Unique validator does this

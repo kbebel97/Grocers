@@ -26,9 +26,11 @@ export class OrdersComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.loading = true;
     this.OrdersService.retrieveAllOrders().subscribe((result) => {
       console.log(result.orders)
       this.orders = result.orders;
+      this.loading = false;
     })
 
 
