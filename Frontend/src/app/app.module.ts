@@ -26,6 +26,8 @@ import { ViewRequestsComponent } from './admin/view-requests/view-requests.compo
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RequestComponent } from './employee/request/request.component';
+import { UserSignupComponent } from './products/user-signup/user-signup.component';
+import { RaiseTicketComponent } from './products/raise-ticket/raise-ticket.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { RequestComponent } from './employee/request/request.component';
     UpdateProductsComponent,
     ViewRequestsComponent,
     GenerateReportsComponent,
-    RequestComponent
+    RequestComponent,
+    UserSignupComponent,
+    RaiseTicketComponent
   ],
   imports: [
     BrowserModule,

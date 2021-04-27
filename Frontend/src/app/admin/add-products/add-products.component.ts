@@ -12,6 +12,7 @@ price:any;
 quantity:any;
 description:any;
 message:any;
+imageUrl:any;
 
   constructor(public adminService: AdminService) { }
 
@@ -25,5 +26,6 @@ message:any;
     this.price = "";
     this.quantity = "";
     this.description="";
+   this.imageUrl="";
   }
 }
