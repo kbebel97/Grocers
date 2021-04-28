@@ -19,9 +19,12 @@ export class LoginComponent implements OnInit {
   employeeDetails?: any;
   message: String;
   loginSuccess: Boolean = false;
+  lockedUser: Boolean = false;
+  numberOfAttempts: number;
 
   ngOnInit(): void {
     sessionStorage.loginObject = "";
+    this.numberOfAttempts = 0;
   }
 
   checkUser(loginRef: any) {
@@ -38,10 +41,24 @@ export class LoginComponent implements OnInit {
         let keepChecking = true;
         this.userDetails.forEach(data => {
           if (keepChecking) {
-            if (userName == data.username && password == data.password) {
+            if (userName == data.username && password == data.password && data.numAttempts < 3) {
               this.loginSuccess = true;
               sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
+            } else if (userName == data.username && password == data.password && data.numAttempts == 3) {
+              this.lockedUser = true;
+              sessionStorage.loginObject = JSON.stringify(data);
+              keepChecking = false;
+            } else if (userName == data.username && password != data.password) {
+              this.numberOfAttempts = this.numberOfAttempts + 1;
+              console.log(this.numberOfAttempts);
+              if (this.numberOfAttempts == 3) {
+                console.log("User account is loced");
+                loginRef.numAttempts = this.numberOfAttempts;
+                this.loginService.lockUserAccount(loginRef).subscribe((result: string) => {
+                  console.log(result);
+                })
+              }
             } else {
               this.loginSuccess = false;
             }
@@ -51,6 +68,8 @@ export class LoginComponent implements OnInit {
         if (this.loginSuccess) {
           //Give the routing path of user
           console.log("Welcome to user portal");
+        } else if (this.lockedUser) {
+          console.log("The user is locked")
         } else {
           this.message = "Please enter the correct details";
         }
@@ -61,7 +80,7 @@ export class LoginComponent implements OnInit {
 
       this.loginService.retrieveAllAdminDetails().subscribe(result => {
         this.adminDetails = result;
-        console.log(this.adminDetails);
+   //     console.log(this.adminDetails);
         let keepChecking = true;
         this.adminDetails.forEach(data => {
           if (keepChecking) {
@@ -87,7 +106,7 @@ export class LoginComponent implements OnInit {
 
       this.loginService.retrieveAllEmployeeDetails().subscribe(result => {
         this.employeeDetails = result;
-        console.log(this.employeeDetails);
+   //     console.log(this.employeeDetails);
         let keepChecking = true;
         this.employeeDetails.forEach(data => {
           if (keepChecking) {
