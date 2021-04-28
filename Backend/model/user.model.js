@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true},
   firstName: { type: String, required: true},
   lastName: { type: String, required: true},
-  paymentMethods: { type: Array, required: false},
+  paymentMethods: { type: Number, required: false},
   shippingAddresses: { type: Array, required: false},
   numAttempts: { type: Number, required: false},
   dateOfBirth: {type:Date, required: true},

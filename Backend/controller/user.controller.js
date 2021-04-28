@@ -9,7 +9,7 @@ let signup = (req, res, next) => {
           userName: req.body.userName,
           firstName: req.body.firstName,
           lastName: req.body.lastName,
-		      locked: false,
+          paymentMethods: 0,
           numAttempts: 0,
           dateOfBirth: req.body.date,
           phoneNumber: req.body.phoneNumber,
@@ -100,4 +100,23 @@ let userById = (req, res, next, id) => {
       });
 }
 
-module.exports = { login, signup, test, getAllUserDetails, userById};
+
+//Update user funds
+let updateUserFunds = (req, res) => {
+    let userId = req.body.userId;
+    let updatedFunds = req.body.updatedFunds;
+
+    UserModel.updateOne({ _id: userId }, { $set: { paymentMethods: updatedFunds } }, (err, result) => {
+        if (!err) {
+            if (result.nModified > 0) {
+                res.send("Funds updated succesfully please login back again")
+            } else {
+                res.send("Record is not available");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
+}
+
+module.exports = { login, signup, test, getAllUserDetails, userById, updateUserFunds};

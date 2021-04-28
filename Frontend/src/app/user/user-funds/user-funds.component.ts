@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserFundService } from './user-fund.service';
 
 @Component({
   selector: 'app-user-funds',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFundsComponent implements OnInit {
 
-  constructor() { }
+  currentFunds: number = 0;
+  updatedFunds: any;
+  message: any;
+  sessionObj: any;
+  constructor(public userFundService: UserFundService) { }
 
   ngOnInit(): void {
+    this.sessionObj = JSON.parse(sessionStorage.loginObject);
+    console.log(this.sessionObj);
+    this.currentFunds = this.sessionObj.paymentMethods;
+  }
+
+  updateFunds(fundsRef: any) {
+    fundsRef.userId = this.sessionObj._id;
+    this.userFundService.updateUserFunds(fundsRef).subscribe((result: string) => {
+      this.message = result;
+    })
+    this.updatedFunds = "";
   }
 
 }

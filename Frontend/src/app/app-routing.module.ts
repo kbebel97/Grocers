@@ -19,6 +19,9 @@ import { ProductsComponent } from './user/products/products.component';
 import { ProductNavComponent } from './user/prod-nav/prod-nav.component';
 import { CartComponent } from './user/cart/cart.component';
 import { RaiseTicketComponent } from './user/raise-ticket/raise-ticket.component';
+import { UserOrderStatusComponent } from './user/user-order-status/user-order-status.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserFundsComponent } from './user/user-funds/user-funds.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "\login", pathMatch: "full" },
@@ -28,7 +31,10 @@ const routes: Routes = [
 
   { path: "\prodPortal", component: ProductNavComponent, children: [
       { path: 'products', component: ProductsComponent },
-      { path: 'cart', component: CartComponent}
+      { path: 'cart', component: CartComponent },
+      { path: 'staus', component: UserOrderStatusComponent },
+      { path: 'profile', component: UserEditComponent },
+      { path: 'funds', component: UserFundsComponent }
     ]
   },
 

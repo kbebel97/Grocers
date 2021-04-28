@@ -41,7 +41,7 @@ export class UserSignupComponent implements OnInit {
       password: signupRef.password,
       firstName: signupRef.firstName,
       lastName: signupRef.lastName,
-      locked: false,
+      paymentMethods:0,
       numAttempts: 0,
       date: signupRef.dateOfBirth,
       phoneNumber: signupRef.phoneNumber,
