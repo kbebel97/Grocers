@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
+const Schema = mongoose.Schema;
 
 
 //Unique in this case does not validate input, it is used internally by mongoose for
@@ -14,7 +15,23 @@ const userSchema = mongoose.Schema({
   paymentMethods: { type: Array, required: false},
   shippingAddresses: { type: Array, required: false},
   numAttempts: { type: Number, required: false},
-  dateOfBirth: {type:Date, required: true}
+  dateOfBirth: {type:Date, required: true},
+  cart: {
+    items: [
+        {
+            productId: {
+                type: Schema.Types.ObjectId,
+                ref: 'Product',
+                required: true
+            },
+            quantity:{
+                type: Number,
+                required: true
+            }
+        }
+    ]
+  }
+
 });
 
 //Unique validator does this

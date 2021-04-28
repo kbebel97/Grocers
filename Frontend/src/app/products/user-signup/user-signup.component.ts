@@ -11,6 +11,12 @@ import { Address } from 'src/app/models/address.model';
   styleUrls: ['./user-signup.component.css']
 })
 export class UserSignupComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
   signupRef: any;
 
   constructor(private router: Router, public userService: UserService) { }

@@ -28,6 +28,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RequestComponent } from './employee/request/request.component';
 import { UserSignupComponent } from './products/user-signup/user-signup.component';
 import { RaiseTicketComponent } from './products/raise-ticket/raise-ticket.component';
+import { ProductNavComponent } from './products/product-nav/product-nav.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { RaiseTicketComponent } from './products/raise-ticket/raise-ticket.compo
     GenerateReportsComponent,
     RequestComponent,
     UserSignupComponent,
+    ProductNavComponent,
     RaiseTicketComponent
   ],
   imports: [

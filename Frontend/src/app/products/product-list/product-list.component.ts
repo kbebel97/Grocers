@@ -28,4 +28,8 @@ export class ProductListComponent implements OnInit {
       });
   }
 
+  addProductToCart(id){
+    
+  }
+
 }

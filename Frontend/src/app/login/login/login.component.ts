@@ -35,6 +35,11 @@ export class LoginComponent implements OnInit {
 
     if (role == "User") {
 
+//       this.loginService.login(this.userName, this.password).subscribe(user =>{
+//         this.loginService.saveUserToLocal(user);
+//         this.router.navigate(['/prodPortal']);
+//       });
+
       this.loginService.retrieveAllUserDetails().subscribe(result => {
         this.userDetails = result;
         console.log(this.userDetails);
@@ -67,6 +72,7 @@ export class LoginComponent implements OnInit {
 
         if (this.loginSuccess) {
           //Give the routing path of user
+          this.router.navigate(['/prodPortal']);
           console.log("Welcome to user portal");
         } else if (this.lockedUser) {
           console.log("The user is locked")
@@ -88,6 +94,7 @@ export class LoginComponent implements OnInit {
               this.loginSuccess = true;
               sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
+              console.log(data);
             } else {
               this.loginSuccess = false;
             }
