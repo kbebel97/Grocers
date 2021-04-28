@@ -7,7 +7,7 @@ export interface User{
   password: string,
   firstName: string,
   lastName: string,
-  locked: boolean,
+  paymentMethods: number;
   numAttempts: number,
   date: Date,
   phoneNumber: number,
