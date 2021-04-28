@@ -1,19 +1,18 @@
 let UserModel = require("../model/user.model.js");
+const Product = require("../model/product.model");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 
 let signup = (req, res, next) => {
+    //we install npm install --save bcrypt so that we can hash our password so it is secure
+    bcrypt.hash(req.body.password, 10)
+      .then(hash => {
         const User = new UserModel({
           email: req.body.email,
-          password: req.body.password,
+          password: hash,
           userName: req.body.userName,
           firstName: req.body.firstName,
-          lastName: req.body.lastName,
-		      locked: false,
-          numAttempts: 0,
-          dateOfBirth: req.body.date,
-          phoneNumber: req.body.phoneNumber,
-          shippingAddresses: req.body.addresses
+          lastName: req.body.lastName
         });
         User.save()
           .then(result => {
@@ -27,7 +26,7 @@ let signup = (req, res, next) => {
               error: err
             })
           })
-      
+      });
   }
 
 let login = (req, res, next) => {
@@ -88,7 +87,7 @@ let test = (req, res, next) => {
 }
 
 let userById = (req, res, next, id) => {
-  User.findById(id)
+  UserModel.findById(id)
       .exec((err, user) => {
           if(err || !user){
               return res.status(400).json({
@@ -96,8 +95,49 @@ let userById = (req, res, next, id) => {
               });
           }
           req.profile = user //adds profile object in req object with user info
+          console.log("User profile " + user);
           next();
       });
 }
 
-module.exports = { login, signup, test, getAllUserDetails, userById};
+let addToCart = (req, res, next) =>{
+  const prodId = req.body.productId;
+  console.log("addToCart: product Id: ", prodId);
+    Product.findById(prodId)
+        .then(product => {
+            return req.profile.addToCart(product);
+        }).then(result => {
+            console.log(result);
+            res.json(result);
+        });
+}
+
+
+
+let getCartItems = (req, res, next) =>{
+  req.profile
+      .populate('cart.items.productId')
+      .execPopulate()
+      .then(user => {
+          console.log("CART PRODUCTS: ", user.cart.items);
+          res.json(user.cart.items);
+              
+      })
+      .catch(err => {
+          const error = new Error(err);
+          error.httpStatusCode = 500;
+          return next(error);
+      }); 
+}
+
+let cartDeleteProduct = (req, res, next) => {
+  const prodId = req.body.productId;
+  req.profile
+      .removeFromCart(prodId)
+      .then(result => {
+          res.json(result);
+      })
+      .catch(err => console.log(err));
+}
+
+module.exports = { login, signup, test, getAllUserDetails, userById, addToCart, getCartItems, cartDeleteProduct};

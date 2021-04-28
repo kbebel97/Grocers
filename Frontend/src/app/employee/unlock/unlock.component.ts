@@ -22,48 +22,48 @@ export class UnlockComponent implements OnInit {
 
   ngOnInit(): void {
 
-  //  let user0 : User = {
-   //   _id: "0",
-   //   userName: "dummy1",
-    //  email : "dummy1@gmail.com",
-   //   password: "dummy1password",
-   //   firstName: "dummy1first",
-    //  lastName: "dummy1last",
-    //  locked: true,
-    //  numAttempts : 2
-   // }
+    let user0 : User = {
+      _id: "0",
+      userName: "dummy1",
+      email : "dummy1@gmail.com",
+      password: "dummy1password",
+      firstName: "dummy1first",
+      lastName: "dummy1last",
+      locked: true,
+      numAttempts : 2
+    }
 
-    //let user1 : User = {
-     // _id: "0",
-      //userName: "dummy1",
-    //  email : "dummy1@gmail.com",
-    //  password: "dummy1password",
-    //  firstName: "dummy1first",
-     // lastName: "dummy1last",
-     // locked: true,
-     // numAttempts : 2
-    //}
+    let user1 : User = {
+      _id: "0",
+      userName: "dummy1",
+      email : "dummy1@gmail.com",
+      password: "dummy1password",
+      firstName: "dummy1first",
+      lastName: "dummy1last",
+      locked: true,
+      numAttempts : 2
+    }
 
- //   this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user1);
-  //  this.lockedAccounts.push(user1);
-  //  this.lockedAccounts.push(user0);
-   // this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user1);
-  //  this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-   // this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-  //  this.lockedAccounts.push(user0);
-   // this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user1);
+    this.lockedAccounts.push(user1);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user1);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
+    this.lockedAccounts.push(user0);
   }
 
   unlock(i : number){

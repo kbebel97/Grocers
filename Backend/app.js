@@ -31,7 +31,7 @@ const mongooseDbOption ={                           // to avoid warning
 // mongoose.connect(url,mongooseDbOption);             //ready to connect 
 
 //Connect to cloud DB
-mongoose.connect(cloudURL).then(() => {//shamanthaka changed to local db connection
+mongoose.connect(url).then(() => {//shamanthaka changed to local db connection
     console.log('Connected to DB');
 })
 .catch(()=> {
@@ -41,7 +41,7 @@ mongoose.connect(cloudURL).then(() => {//shamanthaka changed to local db connect
 //Connect the data 
 mongoose.connection
 
-app.use('', (req, res, next) => {
+app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
@@ -50,6 +50,7 @@ app.use('', (req, res, next) => {
         "Access-Control-Allow-Methods",
         "GET, POST, PATCH, DELETE, OPTIONS, PUT"
     );
+    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 

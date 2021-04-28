@@ -18,18 +18,20 @@ import { UpdateProductsComponent } from './admin/update-products/update-products
 import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
 import { DeleteEmployeeComponent } from './admin/delete-employee/delete-employee.component';
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
-import {UserSignupComponent} from './products/user-signup/user-signup.component'
+import { ListCartComponent } from './cart/list-cart/list-cart.component';
+
+
 const routes: Routes = [
   {
-    path: "\prodPortal", component: ProductNavComponent, children: [
+    path: "prodPortal", component: ProductNavComponent, children: [
       {path: "prodAdd", component: ProductAddComponent},
-      {path: "prodList", component: ProductListComponent}
+      {path: "prodList", component: ProductListComponent},
+      {path: "cartList", component: ListCartComponent}
     ]
   },
 
   
   { path: "\login", component: LoginComponent },
-  {path: "\signup", component: UserSignupComponent},
   {
     path: "\adminPortal", component: AdminPortalComponent, children: [
       { path: 'addProducts', component: AddProductsComponent },

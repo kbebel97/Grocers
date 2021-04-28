@@ -37,8 +37,4 @@ export class LoginService {
     let authUser: User = JSON.parse(localStorage.getItem('auth_user'));
     return authUser;
   }
-  
-  lockUserAccount(loginRef: any): any {
-    return this.http.put("http://localhost:9090/admin/lockUserAccount", loginRef, { responseType: 'text' })
-  }
 }

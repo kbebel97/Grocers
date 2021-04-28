@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { LoginService } from 'src/app/login/login.service';
 import { Product } from 'src/app/model/product';
+import { User } from 'src/app/models/model.user';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from './../../services/product.service';
 
 @Component({
@@ -12,7 +16,8 @@ export class ProductListComponent implements OnInit {
 
   prods: Product[];
 
-  constructor(private prodService: ProductService) { }
+  constructor(private prodService: ProductService, private router: Router,
+        private cartService: CartService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     console.log("product list");
@@ -28,8 +33,21 @@ export class ProductListComponent implements OnInit {
       });
   }
 
-  addProductToCart(id){
+  addProductToCart(id):any{
+    console.log("Product adding to cart : ", id);  
+    let loggedInUser = this.loginService.getUserFromLocal();
+    const authUser = loggedInUser['fetchedUser']
+    const userId = authUser['_id'];
+    const token = loggedInUser.token;
+    return this.cartService.addToCort(userId, id, token).subscribe(result =>{
+      return this.goToCartList();  
+    });
     
+  }
+
+  goToCartList(){
+    //return this.router.navigate['/prodPortal/cartList'];
+    return this.router.navigateByUrl('/prodPortal/cartList');
   }
 
 }

@@ -19,12 +19,8 @@ export class LoginComponent implements OnInit {
   employeeDetails?: any;
   message: String;
   loginSuccess: Boolean = false;
-  lockedUser: Boolean = false;
-  numberOfAttempts: number;
 
   ngOnInit(): void {
-    sessionStorage.loginObject = "";
-    this.numberOfAttempts = 0;
   }
 
   checkUser(loginRef: any) {
@@ -35,35 +31,21 @@ export class LoginComponent implements OnInit {
 
     if (role == "User") {
 
-//       this.loginService.login(this.userName, this.password).subscribe(user =>{
-//         this.loginService.saveUserToLocal(user);
-//         this.router.navigate(['/prodPortal']);
-//       });
+      this.loginService.login(this.userName, this.password).subscribe(user =>{
+        this.loginService.saveUserToLocal(user);
+        this.router.navigate(['/prodPortal']);
+      });
 
-      this.loginService.retrieveAllUserDetails().subscribe(result => {
+      /*this.loginService.retrieveAllUserDetails().subscribe(result => {
         this.userDetails = result;
         console.log(this.userDetails);
         let keepChecking = true;
         this.userDetails.forEach(data => {
           if (keepChecking) {
-            if (userName == data.username && password == data.password && data.numAttempts < 3) {
+            if (userName == data.username && password == data.password) {
               this.loginSuccess = true;
-              sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
-            } else if (userName == data.username && password == data.password && data.numAttempts == 3) {
-              this.lockedUser = true;
-              sessionStorage.loginObject = JSON.stringify(data);
-              keepChecking = false;
-            } else if (userName == data.username && password != data.password) {
-              this.numberOfAttempts = this.numberOfAttempts + 1;
-              console.log(this.numberOfAttempts);
-              if (this.numberOfAttempts == 3) {
-                console.log("User account is loced");
-                loginRef.numAttempts = this.numberOfAttempts;
-                this.loginService.lockUserAccount(loginRef).subscribe((result: string) => {
-                  console.log(result);
-                })
-              }
+              console.log(data);
             } else {
               this.loginSuccess = false;
             }
@@ -74,25 +56,22 @@ export class LoginComponent implements OnInit {
           //Give the routing path of user
           this.router.navigate(['/prodPortal']);
           console.log("Welcome to user portal");
-        } else if (this.lockedUser) {
-          console.log("The user is locked")
         } else {
           this.message = "Please enter the correct details";
         }
 
-      });
+      });*/
 
     } else if (role == "Admin") {
 
       this.loginService.retrieveAllAdminDetails().subscribe(result => {
         this.adminDetails = result;
-   //     console.log(this.adminDetails);
+        console.log(this.adminDetails);
         let keepChecking = true;
         this.adminDetails.forEach(data => {
           if (keepChecking) {
             if (userName == data.username && password == data.password) {
               this.loginSuccess = true;
-              sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
               console.log(data);
             } else {
@@ -113,13 +92,12 @@ export class LoginComponent implements OnInit {
 
       this.loginService.retrieveAllEmployeeDetails().subscribe(result => {
         this.employeeDetails = result;
-   //     console.log(this.employeeDetails);
+        console.log(this.employeeDetails);
         let keepChecking = true;
         this.employeeDetails.forEach(data => {
           if (keepChecking) {
             if (userName == data.userName && password == data.password) {
               this.loginSuccess = true;
-              sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
             } else {
               this.loginSuccess = false;

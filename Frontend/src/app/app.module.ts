@@ -29,6 +29,9 @@ import { RequestComponent } from './employee/request/request.component';
 import { UserSignupComponent } from './products/user-signup/user-signup.component';
 import { RaiseTicketComponent } from './products/raise-ticket/raise-ticket.component';
 import { ProductNavComponent } from './products/product-nav/product-nav.component';
+import { AddCortComponent } from './cart/add-cart/add-cort.component';
+import { ListCartComponent } from './cart/list-cart/list-cart.component';
+import { DeleteCartComponent } from './cart/delete-cart/delete-cart.component';
 
 @NgModule({
   declarations: [
@@ -51,8 +54,11 @@ import { ProductNavComponent } from './products/product-nav/product-nav.componen
     GenerateReportsComponent,
     RequestComponent,
     UserSignupComponent,
+    RaiseTicketComponent,
     ProductNavComponent,
-    RaiseTicketComponent
+    AddCortComponent,
+    ListCartComponent,
+    DeleteCartComponent
   ],
   imports: [
     BrowserModule,

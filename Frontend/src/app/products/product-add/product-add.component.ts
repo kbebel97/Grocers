@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/services/product.service';
+import {AddCortComponent} from '../../cart/add-cart/add-cort.component';
 
 @Component({
   selector: 'app-product-add',
@@ -34,5 +35,6 @@ export class ProductAddComponent implements OnInit {
   gotoProdList(){
     this.router.navigate(['prodPortal/prodList']);
   }
+
 
 }

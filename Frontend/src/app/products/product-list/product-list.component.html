@@ -12,13 +12,13 @@
                 </div>
                 <div class="card__content">
                     <h2 class="product__price">Price: ${{product.price}}</h2>
-                    <h2 class="product__price">Quantity: {{product.quantity}}</h2>
+                    <!--h2 class="product__price">Quantity: {{product.quantity}}</h2-->
                     <p class="product__description">{{product.description}}</p>
                 </div>
-                <span>
+                <div>
                     <!--button (click)="deleteProduct(product._id)" class="btn">Delete</button-->
                     <button (click)="addProductToCart(product._id)" class="btn" style="margin-left: 10px">Add to cart</button>
-                </span>
+                </div>
                 
             </article>
         </div>

@@ -2,7 +2,6 @@ let AdminModel = require("../model/admin.model.js");
 let EmployeeModel = require("../model/employee.model.js");
 let ProductModel = require("../model/product.model.js");
 let EmployeeRequestsModel = require("../model/employeeRequests.model.js");
-let UserModel = require("../model/user.model.js");
 
 const bcrypt = require("bcrypt");
 
@@ -190,39 +189,7 @@ let getAllEmployeeRequests = (req, res) => {
 
 }
 
-//Update employee requests
-let updateRequests = (req, res, next) => {
-    console.log(req.body);
-    let updatedRequests = [];
-    req.body.forEach(request => {
-        EmployeeRequestsModel.findByIdAndUpdate({ _id: request._id }, request, { new: true }).then((updatedRequest) => {
-            updatedRequests.push(updatedRequest);
-        });
-    })
-    console.log(updatedRequests);
-    res.status(200).json({
-        message: 'Requests Updated!',
-        employeeRequests: updatedRequests
-    });
-}
 
-//Lock User Account
-let lockUserAccount = (req, res) => {
-    let username = req.body.userName;
-    let numAttempts = req.body.numAttempts;
 
-    UserModel.updateOne({ username: username }, { $set: { numAttempts: numAttempts } }, (err, result) => {
-        if (!err) {
-            if (result.nModified > 0) {
-                res.send("Record updated succesfully")
-            } else {
-                res.send("Record is not available");
-            }
-        } else {
-            res.send("Error generated " + err);
-        }
-    })
-}
-
-module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeByEmail, addProductDetails, deleteProductByName, updateProductPrice, getAllEmployeeRequests, updateRequests, lockUserAccount};
+module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeByEmail, addProductDetails, deleteProductByName, updateProductPrice, getAllEmployeeRequests};
 

@@ -1,0 +1,21 @@
+
+
+<main>
+    <div *ngIf="cartItems">
+        <ul class="cart__item-list">
+            <samll *ngFor="let p of cartItems">
+                <li class="cart__item">
+                    <h1>{{p.productId.name}}</h1>
+                    <span><h1>${{p.productId.price}}</h1><h1>/item</h1></span>
+                    <h1>{{p.quantity}}</h1>                  
+                    <button (click)="deleteItem(p.productId._id)" class="btn danger" >Delete</button>                    
+                    <a class="btn" href="javascript:void(0)">Order Now!</a>                  
+                </li>
+            </samll>
+            <h1>Total Price :$ {{totalPrice}}</h1>
+        </ul>
+    </div>
+    
+</main>
+
+
