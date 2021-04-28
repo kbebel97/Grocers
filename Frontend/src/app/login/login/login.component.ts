@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         let keepChecking = true;
         this.userDetails.forEach(data => {
           if (keepChecking) {
-            if (userName == data.username && password == data.password && data.numAttempts < 3) {
+            if (userName == data.userName && password == data.password && data.numAttempts < 3) {
               this.loginSuccess = true;
               sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
 
         if (this.loginSuccess) {
           //Give the routing path of user
-          this.router.navigate(['/prodPortal']);
+          this.router.navigate(['/prodPortal/prodList']);
           console.log("Welcome to user portal");
         } else if (this.lockedUser) {
           console.log("The user is locked")

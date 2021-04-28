@@ -22,8 +22,8 @@ import {UserSignupComponent} from './products/user-signup/user-signup.component'
 const routes: Routes = [
   {
     path: "\prodPortal", component: ProductNavComponent, children: [
-      {path: "prodAdd", component: ProductAddComponent},
-      {path: "prodList", component: ProductListComponent}
+      { path: 'prodList', component: ProductListComponent },
+   //   {path: 'prodAdd', component: ProductAddComponent}
     ]
   },
 

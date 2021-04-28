@@ -12,8 +12,6 @@ import { Address } from 'src/app/models/address.model';
 })
 export class UserSignupComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit(): void {
   }
 
@@ -35,8 +33,6 @@ export class UserSignupComponent implements OnInit {
   state: any;
   zipcode:any;
   
-  ngOnInit(): void {
-  }
 
   registerUser(signupRef)
   {
