@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
           console.log("Welcome to user portal");
         } else if (this.lockedUser) {
           console.log("The user is locked")
+          this.router.navigate(['/logUserTicket']);
         } else {
           this.message = "Please enter the correct details";
         }
