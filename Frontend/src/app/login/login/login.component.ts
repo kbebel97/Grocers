@@ -31,7 +31,12 @@ export class LoginComponent implements OnInit {
 
     if (role == "User") {
 
-      this.loginService.retrieveAllUserDetails().subscribe(result => {
+      this.loginService.login(this.userName, this.password).subscribe(user =>{
+        this.loginService.saveUserToLocal(user);
+        this.router.navigate(['/prodPortal']);
+      });
+
+      /*this.loginService.retrieveAllUserDetails().subscribe(result => {
         this.userDetails = result;
         console.log(this.userDetails);
         let keepChecking = true;
@@ -40,6 +45,7 @@ export class LoginComponent implements OnInit {
             if (userName == data.username && password == data.password) {
               this.loginSuccess = true;
               keepChecking = false;
+              console.log(data);
             } else {
               this.loginSuccess = false;
             }
@@ -48,12 +54,13 @@ export class LoginComponent implements OnInit {
 
         if (this.loginSuccess) {
           //Give the routing path of user
+          this.router.navigate(['/prodPortal']);
           console.log("Welcome to user portal");
         } else {
           this.message = "Please enter the correct details";
         }
 
-      });
+      });*/
 
     } else if (role == "Admin") {
 
@@ -66,6 +73,7 @@ export class LoginComponent implements OnInit {
             if (userName == data.username && password == data.password) {
               this.loginSuccess = true;
               keepChecking = false;
+              console.log(data);
             } else {
               this.loginSuccess = false;
             }

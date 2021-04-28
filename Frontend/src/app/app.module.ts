@@ -8,7 +8,7 @@ import { OrdersComponent } from './employee/orders/orders.component';
 import { LoginComponent } from './login/login/login.component';
 import { AdminPortalComponent } from './admin/admin-portal/admin-portal.component';
 
-import { NavComponent } from './nav/nav/nav.component';
+//import { NavComponent } from './nav/nav/nav.component';
 import { ProductListComponent } from './products/product-list/product-list.component'
 import { ProductAddComponent } from './products/product-add/product-add.component';
 import { ProductEditComponent } from './products/product-edit/product-edit.component';
@@ -26,6 +26,9 @@ import { ViewRequestsComponent } from './admin/view-requests/view-requests.compo
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RequestComponent } from './employee/request/request.component';
+import { UserSignupComponent } from './products/user-signup/user-signup.component';
+import { RaiseTicketComponent } from './products/raise-ticket/raise-ticket.component';
+import { ProductNavComponent } from './products/product-nav/product-nav.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,7 @@ import { RequestComponent } from './employee/request/request.component';
     NavComponent,
     ProductListComponent,
     ProductAddComponent,
-    ProductEditComponent
+    ProductEditComponent,
     AddEmployeeComponent,
     DeleteEmployeeComponent,
     AddProductsComponent,
@@ -46,7 +49,10 @@ import { RequestComponent } from './employee/request/request.component';
     UpdateProductsComponent,
     ViewRequestsComponent,
     GenerateReportsComponent,
-    RequestComponent
+    RequestComponent,
+    UserSignupComponent,
+    RaiseTicketComponent,
+    ProductNavComponent
   ],
   imports: [
     BrowserModule,

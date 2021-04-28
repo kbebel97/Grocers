@@ -1,5 +1,6 @@
 let UserModel = require("../model/user.model.js");
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
 
 let signup = (req, res, next) => {
     //we install npm install --save bcrypt so that we can hash our password so it is secure
@@ -8,7 +9,7 @@ let signup = (req, res, next) => {
         const User = new UserModel({
           email: req.body.email,
           password: hash,
-          //userName: req.body.userName,
+          userName: req.body.userName,
           firstName: req.body.firstName,
           lastName: req.body.lastName
         });
