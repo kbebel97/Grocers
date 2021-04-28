@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { RequestComponent } from './employee/request/request.component';
 import { EditComponent } from './employee/edit/edit.component';
 import { NavComponent } from './employee/nav/nav.component';
 import { OrdersComponent } from './employee/orders/orders.component';
 import { UnlockComponent } from './employee/unlock/unlock.component';
-
 import { AdminPortalComponent } from './admin/admin-portal/admin-portal.component';
 import { AddEmployeeComponent } from './admin/add-employee/add-employee.component';
 import { AddProductsComponent } from './admin/add-products/add-products.component';
@@ -15,17 +13,18 @@ import { UpdateProductsComponent } from './admin/update-products/update-products
 import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
 import { DeleteEmployeeComponent } from './admin/delete-employee/delete-employee.component';
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
-
 import { LoginComponent } from './login/login.component';
 import { UserSignupComponent } from './signup/user-signup.component';
-
 import { ProductsComponent } from './user/products/products.component';
 import { ProductNavComponent } from './user/prod-nav/prod-nav.component';
 import { CartComponent } from './user/cart/cart.component';
+import { RaiseTicketComponent } from './user/raise-ticket/raise-ticket.component';
+
 const routes: Routes = [
   { path: "", redirectTo: "\login", pathMatch: "full" },
   { path: "\login", component: LoginComponent },
-  { path: "\signup", component: UserSignupComponent},
+  { path: "\logUserTicket", component: RaiseTicketComponent },
+  { path: "\signup", component: UserSignupComponent },
 
   { path: "\prodPortal", component: ProductNavComponent, children: [
       { path: 'products', component: ProductsComponent },
