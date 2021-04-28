@@ -18,8 +18,7 @@ import { UpdateProductsComponent } from './admin/update-products/update-products
 import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
 import { DeleteEmployeeComponent } from './admin/delete-employee/delete-employee.component';
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
-
-
+import {UserSignupComponent} from './products/user-signup/user-signup.component'
 const routes: Routes = [
   {
     path: "\prodPortal", component: ProductNavComponent, children: [
@@ -30,6 +29,7 @@ const routes: Routes = [
 
   
   { path: "\login", component: LoginComponent },
+  {path: "\signup", component: UserSignupComponent},
   {
     path: "\adminPortal", component: AdminPortalComponent, children: [
       { path: 'addProducts', component: AddProductsComponent },

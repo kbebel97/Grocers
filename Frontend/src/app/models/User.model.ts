@@ -1,3 +1,5 @@
+import { Address } from "./address.model";
+
 export interface User{
   _id : string,
   userName: string,
@@ -6,5 +8,8 @@ export interface User{
   firstName: string,
   lastName: string,
   locked: boolean,
-  numAttempts: number
+  numAttempts: number,
+  date: Date,
+  phoneNumber: number,
+  addresses: Array<Address>
 }

@@ -51,8 +51,8 @@ import { ProductNavComponent } from './products/product-nav/product-nav.componen
     GenerateReportsComponent,
     RequestComponent,
     UserSignupComponent,
-    RaiseTicketComponent,
-    ProductNavComponent
+    ProductNavComponent,
+    RaiseTicketComponent
   ],
   imports: [
     BrowserModule,
