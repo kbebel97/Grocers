@@ -23,4 +23,8 @@ export class LoginService {
   retrieveAllEmployeeDetails(): Observable<Employee[]> {
     return this.http.get<Employee[]>("http://localhost:9090/employee/allEmployeeDetails");
   }
+
+  lockUserAccount(loginRef: any): any {
+    return this.http.put("http://localhost:9090/admin/lockUserAccount", loginRef, { responseType: 'text' })
+  }
 }
