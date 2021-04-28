@@ -26,6 +26,9 @@ import { ProductsComponent } from './user/products/products.component';
 import { RaiseTicketComponent } from './user/raise-ticket/raise-ticket.component';
 import { ProductNavComponent } from './user/prod-nav/prod-nav.component';
 import { CartComponent } from './user/cart/cart.component';
+import { UserOrderStatusComponent } from './user/user-order-status/user-order-status.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserFundsComponent } from './user/user-funds/user-funds.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { CartComponent } from './user/cart/cart.component';
     ProductNavComponent,
     RaiseTicketComponent,
     ProductsComponent,
-    CartComponent
+    CartComponent,
+    UserOrderStatusComponent,
+    UserEditComponent,
+    UserFundsComponent
   ],
   imports: [
     BrowserModule,
