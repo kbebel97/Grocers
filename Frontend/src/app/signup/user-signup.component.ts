@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { User } from 'src/app/models/model.user';
-import {UserService} from '../user.service';
-import {User} from 'src/app/models/User.model'
 import { Address } from 'src/app/models/address.model';
+import { User } from '../models/User.model';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user-signup',
@@ -32,15 +31,9 @@ export class UserSignupComponent implements OnInit {
   city: any;
   state: any;
   zipcode:any;
-  
 
-  registerUser(signupRef)
-  {
 
-    console.log(signupRef);
-    let address: Address
-
-    
+  registerUser(signupRef){
     let user: User={
       _id:"",
       userName: signupRef.userName,
@@ -57,11 +50,9 @@ export class UserSignupComponent implements OnInit {
         Apt: signupRef.apt,
         city: signupRef.city,
         state: signupRef.state,
-        zipcode: signupRef.zipcode}] 
-
-      
+        zipcode: signupRef.zipcode}]
     }
-    //console.log(address)
+
     this.userService.storeUserDetailsInfo(user).
     subscribe(result => this.message = result.message,error => this.message = error);
   }

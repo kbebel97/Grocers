@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-product-nav',
-  templateUrl: './product-nav.component.html',
-  styleUrls: ['./product-nav.component.css']
+  selector: 'app-nav',
+  templateUrl: './prod-nav.component.html',
+  styleUrls: ['./prod-nav.component.css']
 })
 export class ProductNavComponent implements OnInit {
 
@@ -14,15 +14,12 @@ export class ProductNavComponent implements OnInit {
     this.goToAddProductComponent();
   }
 
-
   goToAddProductComponent() {
-    console.log("In add product component");
-    this.router.navigate(['/prodPortal/prodAdd']);
+    this.router.navigate(['/prodPortal/products']);
   }
 
   goToListProductsComponent() {
-    console.log("In product list component");//
-    this.router.navigate(['/prodPortal/prodList']);
+    this.router.navigate(['/prodPortal/cart']);
   }
 
 }

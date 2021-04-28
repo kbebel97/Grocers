@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../login.service';
+import { LoginService } from './login.service';
 import { Admin } from 'src/app/models/model.admin';
 
 @Component({
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
               this.numberOfAttempts = this.numberOfAttempts + 1;
               console.log(this.numberOfAttempts);
               if (this.numberOfAttempts == 3) {
-                console.log("User account is loced");
+                console.log("User account is locked");
                 loginRef.numAttempts = this.numberOfAttempts;
                 this.loginService.lockUserAccount(loginRef).subscribe((result: string) => {
                   console.log(result);
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
 
         if (this.loginSuccess) {
           //Give the routing path of user
-          this.router.navigate(['/prodPortal/prodList']);
+          this.router.navigate(['/prodPortal/products']);
           console.log("Welcome to user portal");
         } else if (this.lockedUser) {
           console.log("The user is locked")

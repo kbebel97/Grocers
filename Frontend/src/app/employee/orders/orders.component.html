@@ -10,7 +10,7 @@
       <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Email</div></th>
       <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Username</div></th>
       <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Items</div></th>
-      <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;">
+      <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: flex-end; align-items: center;">
         <form [formGroup]="searchRef" class="example" (ngSubmit)="search()">
           <input type="text" placeholder="Email Search" formControlName="email" >
           <button type="submit"><i class="fa fa-search"></i></button>
@@ -83,21 +83,18 @@
     </div>
   </tbody>
   <tfoot>
-    <tr id="foot" class="row">
-      <div style="display: flex; width: 100%; padding-right: 20px; flex-direction: row;">
-        <!-- <div style="display: flex; flex-direction:column;  flex : 1.5;">
-          <label>Sort:</label> -->
-          <div style="display: flex; justify-content: space-between; flex-direction: row; flex: 1.2">
-            <button class="btn btn-outline-secondary" (click)="sortNewest()" style="width: fit-content; width: 80px; ">Newest</button>
-            <button class="btn btn-outline-secondary" (click)="sortOldest()" style="width: fit-content; width: 80px;">Oldest</button>
-            <button class="btn btn-outline-primary" (click)="sortDelivered()" style="width: fit-content; width: 100px;">Delivered</button>
-            <button class="btn btn-outline-primary" (click)="sortDelivery()" style="width: fit-content; width: 100px;">Delivery</button>
-            <button class="btn btn-outline-primary" (click)="sortCanceled()" style="width: fit-content; width: 100px;">Canceled</button>
-            <button class="btn btn-outline-primary" (click)="sortShipped()" style="width: fit-content; width: 100px;">Shipped</button>
-          </div>
-        <!-- </div> -->
+    <tr id="foot" class="row" >
+      <div style="display: flex; width: 100%; flex-direction: row;">
+        <div style="display: flex; justify-content: space-evenly; flex-direction: row; flex: 1.2;">
+          <button class="btn btn-outline-secondary" (click)="sortNewest()" style="width: fit-content; width: 80px; ">Newest</button>
+          <button class="btn btn-outline-secondary" (click)="sortOldest()" style="width: fit-content; width: 80px;">Oldest</button>
+          <button class="btn btn-outline-primary" (click)="sortDelivered()" style="width: fit-content; width: 100px;">Delivered</button>
+          <button class="btn btn-outline-primary" (click)="sortDelivery()" style="width: fit-content; width: 100px;">Delivery</button>
+          <button class="btn btn-outline-primary" (click)="sortCanceled()" style="width: fit-content; width: 100px;">Canceled</button>
+          <button class="btn btn-outline-primary" (click)="sortShipped()" style="width: fit-content; width: 100px;">Shipped</button>
+        </div>
         <div style="display: flex; flex : 1; justify-content: flex-end; align-items: center;">
-          <button class="btn btn-success" (click)="updateOrders()" style="width: fit-content; height: 38px;">Update Orders</button>
+          <button class="btn btn-success" (click)="updateOrders()">Update Orders</button>
         </div>
       </div>
     </tr>

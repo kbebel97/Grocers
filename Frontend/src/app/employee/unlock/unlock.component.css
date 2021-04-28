@@ -5,9 +5,16 @@ tr:hover{
 table{
   height: calc(100% - 77px);
 }
+
 * {
   box-sizing: border-box;
 }
+
+
+#foot{
+  padding-top: 20px; padding-bottom: 20px; background-color: seashell; border-top: 3px solid black; margin: 0; height: inherit;
+}
+
 
 /* Style the search field */
 form.example input[type=text] {
@@ -41,4 +48,8 @@ form.example::after {
   content: "";
   clear: both;
   display: table;
+}
+
+#foot{
+  padding-top: 20px; padding-bottom: 20px; background-color: seashell; border-top: 3px solid black; margin: 0; height: inherit;
 }
