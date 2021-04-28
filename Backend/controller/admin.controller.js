@@ -189,7 +189,23 @@ let getAllEmployeeRequests = (req, res) => {
 
 }
 
+//Update employee requests
+let updateRequests = (req, res, next) => {
+    console.log(req.body);
+    let updatedRequests = [];
+    req.body.forEach(request => {
+        EmployeeRequestsModel.findByIdAndUpdate({ _id: request._id }, request, { new: true }).then((updatedRequest) => {
+            updatedRequests.push(updatedRequest);
+        });
+    })
+    console.log(updatedRequests);
+    res.status(200).json({
+        message: 'Requests Updated!',
+        employeeRequests: updatedRequests
+    });
+}
 
 
-module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeByEmail, addProductDetails, deleteProductByName, updateProductPrice, getAllEmployeeRequests};
+
+module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeByEmail, addProductDetails, deleteProductByName, updateProductPrice, getAllEmployeeRequests, updateRequests};
 
