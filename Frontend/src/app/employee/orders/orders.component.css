@@ -10,6 +10,7 @@ table{
 #foot{
   padding-top: 20px; padding-bottom: 20px; background-color: seashell; border-top: 3px solid black; margin: 0; height: inherit;
 }
+
 /* Style the search field */
 form.example input[type=text] {
   padding: 10px;

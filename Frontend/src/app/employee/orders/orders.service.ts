@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { Order } from 'src/app/models/Order.model';
-import { OrdersComponent } from './orders.component';
 
 @Injectable()
 export class OrdersService {

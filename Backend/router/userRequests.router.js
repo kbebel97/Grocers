@@ -6,6 +6,8 @@ let userRequestsController = require("../controller/userRequests.controller.js")
 
 router.post("/postRequest", userRequestsController.postRequest);
 router.get("/getRequests", userRequestsController.getRequests);
-
+router.post("/unlockAccounts", userRequestsController.unlockAccounts);
+router.get("/getLatestRequests", userRequestsController.getLatestRequests);
+router.get("/getOldestRequests", userRequestsController.getOldestRequests);
 
 module.exports=router;
