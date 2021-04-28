@@ -32,7 +32,7 @@ export class ProductAddComponent implements OnInit {
   }
 
   gotoProdList(){
-    this.router.navigate(['/prodList']);
+    this.router.navigate(['prodPortal/prodList']);
   }
 
 }

@@ -7,6 +7,7 @@ import { NavComponent } from './employee/nav/nav.component';
 import { OrdersComponent } from './employee/orders/orders.component';
 import { UnlockComponent } from './employee/unlock/unlock.component';
 import { LoginComponent } from './login/login/login.component';
+import { ProductNavComponent } from './products/product-nav/product-nav.component';
 import {ProductAddComponent} from './products/product-add/product-add.component';
 import { ProductListComponent } from './products/product-list/product-list.component'
 
@@ -17,11 +18,18 @@ import { UpdateProductsComponent } from './admin/update-products/update-products
 import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
 import { DeleteEmployeeComponent } from './admin/delete-employee/delete-employee.component';
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
-
+import {UserSignupComponent} from './products/user-signup/user-signup.component'
 const routes: Routes = [
-  {path: "prodAdd", component: ProductAddComponent},
-  {path: "prodList", component: ProductListComponent},
+  {
+    path: "\prodPortal", component: ProductNavComponent, children: [
+      { path: 'prodList', component: ProductListComponent },
+   //   {path: 'prodAdd', component: ProductAddComponent}
+    ]
+  },
+
+  
   { path: "\login", component: LoginComponent },
+  {path: "\signup", component: UserSignupComponent},
   {
     path: "\adminPortal", component: AdminPortalComponent, children: [
       { path: 'addProducts', component: AddProductsComponent },

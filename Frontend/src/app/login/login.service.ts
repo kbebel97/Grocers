@@ -23,4 +23,22 @@ export class LoginService {
   retrieveAllEmployeeDetails(): Observable<Employee[]> {
     return this.http.get<Employee[]>("http://localhost:9090/employee/allEmployeeDetails");
   }
+
+  login(userName, password): Observable<User>{
+    return this.http.post<User>('http://localhost:9090/user/login', {userName, password});
+  }
+
+  saveUserToLocal(authUser: User){
+    localStorage.setItem('auth_user', JSON.stringify(authUser));
+    return authUser;
+  }
+
+  getUserFromLocal(): User{
+    let authUser: User = JSON.parse(localStorage.getItem('auth_user'));
+    return authUser;
+  }
+  
+  lockUserAccount(loginRef: any): any {
+    return this.http.put("http://localhost:9090/admin/lockUserAccount", loginRef, { responseType: 'text' })
+  }
 }

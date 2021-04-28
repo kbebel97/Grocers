@@ -10,6 +10,8 @@ router.delete("/deleteProductByName/:name",AdminController.deleteProductByName);
 router.put("/updateProductPrice",AdminController.updateProductPrice);
 router.delete("/deleteEmployeeByEmail/:email", AdminController.deleteEmployeeByEmail);
 router.get("/allEmployeeRequests", AdminController.getAllEmployeeRequests);
+router.put("/updateRequests", AdminController.updateRequests);
+router.put("/lockUserAccount", AdminController.lockUserAccount);
 
 
 

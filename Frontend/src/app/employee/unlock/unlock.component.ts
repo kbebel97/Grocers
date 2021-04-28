@@ -28,28 +28,6 @@ export class UnlockComponent implements OnInit {
     this.UnlockService.getUserRequests().subscribe((result)=> {
       this.userRequests = result.userRequests;
     })
-
-    let user0 : User = {
-      _id: "0",
-      userName: "dummy1",
-      email : "dummy1@gmail.com",
-      password: "dummy1password",
-      firstName: "dummy1first",
-      lastName: "dummy1last",
-      locked: true,
-      numAttempts : 2
-    }
-
-    let user1 : User = {
-      _id: "0",
-      userName: "dummy1",
-      email : "dummy1@gmail.com",
-      password: "dummy1password",
-      firstName: "dummy1first",
-      lastName: "dummy1last",
-      locked: true,
-      numAttempts : 2
-    }
   }
 
   unlock(request_ : userRequest, i : number){

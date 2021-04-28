@@ -11,10 +11,12 @@
                     <img style="width:200px;height:200px;" src="{{product.imageUrl}}" alt="{{product.imageUrl}}">
                 </div>
                 <div class="card__content">
-                    <h2 class="product__price">{{product.price}}</h2>
+                    <h2 class="product__price">Price: ${{product.price}}</h2>
+                    <h2 class="product__price">Quantity: {{product.quantity}}</h2>
                     <p class="product__description">{{product.description}}</p>
                 </div>
-                <span><button (click)="deleteProduct(employee.id)" class="btn">Delete</button>
+                <span>
+                    <!--button (click)="deleteProduct(product._id)" class="btn">Delete</button-->
                     <button (click)="addProductToCart(product._id)" class="btn" style="margin-left: 10px">Add to cart</button>
                 </span>
                 
