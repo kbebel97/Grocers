@@ -176,9 +176,26 @@ let updateProductPrice= (req,res)=> {
         }else {
             res.send("Error generated "+err);
         }
-    })
+    });
 }
-
+// update quantity details
+let updateProductQuantity= (req,res)=> {
+   console.log("requestBody", req.body);
+    let productName = req.body.name1;
+    let updatedQuantity = req.body.quantity;
+	
+    ProductModel.updateMany({name:productName},{$set:{quantity:updatedQuantity}},(err,result)=> {
+        if(!err){
+            if(result.nModified>0){
+                    res.send("Record updated succesfully")
+            }else {
+                    res.send("Record is not available");
+            }
+        }else {
+            res.send("Error generated "+err);
+        }
+    });
+}
 
 let getAllEmployeeRequests = (req, res) => {
 
@@ -224,5 +241,7 @@ let lockUserAccount = (req, res) => {
     })
 }
 
-module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeByEmail, addProductDetails, deleteProductByName, updateProductPrice, getAllEmployeeRequests, updateRequests, lockUserAccount};
+module.exports = { login, signup, getAllAdminDetails, addEmployeeDetails, deleteEmployeeByEmail,
+				addProductDetails, deleteProductByName, updateProductPrice, getAllEmployeeRequests,
+				updateRequests, lockUserAccount, updateProductQuantity};
 

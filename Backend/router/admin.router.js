@@ -8,6 +8,7 @@ router.post("/addEmployeeDetails", AdminController.addEmployeeDetails);
 router.post("/addProductDetails", AdminController.addProductDetails);
 router.delete("/deleteProductByName/:name",AdminController.deleteProductByName);
 router.put("/updateProductPrice",AdminController.updateProductPrice);
+router.put("/updateProductQuantity",AdminController.updateProductQuantity);
 router.delete("/deleteEmployeeByEmail/:email", AdminController.deleteEmployeeByEmail);
 router.get("/allEmployeeRequests", AdminController.getAllEmployeeRequests);
 router.put("/updateRequests", AdminController.updateRequests);
