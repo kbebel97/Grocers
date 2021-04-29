@@ -8,7 +8,7 @@
   <style>
     form {
       border-style: double;
-      height: 80%;
+      height: 50%;
       margin: 1% 1% 1% 1%;
       padding: 1%;
     }
@@ -27,13 +27,31 @@
     <h3>
       Price
       <br />
-      $ <input type="number" name="price" [(ngModel)]="price" required />
+      $ <input type="number" name="price" [(ngModel)]="price"  />
     </h3>
     <input type="reset" value="Clear" />
     <input type="submit" value="Update Product" />
     <div>
-      {{message}}
+      {{productMessage}}
     </div>
-  </form>
+    </form>
+    <form #quantityRef="ngForm" (ngSubmit)="updateQuantity(quantityRef.value)">
+    <h1><b>Update Quantity</b></h1>
+    <h3>
+     Name
+      <br />
+      <input type="text" name="name1" [(ngModel)]="name1" required />
+    </h3>
+    <h3>
+      Quantity
+      <br />
+      <input type="number" name="quantity" [(ngModel)]="quantity" />
+    </h3>
+    <input type="reset" value="Clear" />
+    <input type="submit" value="Update quantity" />
+    <div>
+      {{quantityMessage}}
+    </div>
+    </form>
 </body>
 </html>
