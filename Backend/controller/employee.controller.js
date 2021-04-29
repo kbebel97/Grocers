@@ -1,4 +1,5 @@
 let EmployeeModel = require("../model/employee.model.js");
+let RequestModel = require("../model/employeeRequests.model.js");
 const bcrypt = require("bcrypt");
 
 let signup = (req, res, next) => {
@@ -148,4 +149,31 @@ let updateEmployeePassword = (req, res) => {
     });
 }
 
-module.exports = { login, signup, getAllEmploeeDetails, updateEmployeePassword};
+//cannot retrieve sessionStorage username to filter
+let retrieveRequests = (req, res, next) => {
+RequestModel.find({/*"username" : "employee"*/}).then((fetchedRequests)=> {
+      res.status(200).json({
+          message: 'Requests fetched!',
+          requests: fetchedRequests
+        });
+  })
+}
+
+let submitRequest = (req, res) => {
+  let request = new RequestModel({
+    username: req.body.name,
+    description: req.body.description,
+    status: "Pending"    
+  });
+
+  request.save((err, result) => {
+      if (!err) {
+          res.send("Request stored successfully ")
+          //res.json({"msg":"Record stored successfully"})
+      } else {
+          res.send("Request didn't store ");
+      }
+  });
+}
+
+module.exports = { login, signup, getAllEmploeeDetails, updateEmployeePassword, retrieveRequests, submitRequest};
