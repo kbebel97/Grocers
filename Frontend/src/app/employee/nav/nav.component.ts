@@ -8,9 +8,12 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
+  username : String;
+
   constructor(private router : Router) { }
 
   ngOnInit(): void {
+    this.username = JSON.parse(sessionStorage.loginObject)["userName"];
   }
 
 }

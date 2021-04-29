@@ -10,10 +10,10 @@ export class RequestService {
   constructor(public http: HttpClient) { }
 
   submitRequest(reqRef:any): Observable<any>{
-    return this.http.post("http://localhost:9090/employee/submitRequest",reqRef,{responseType:'text'})
+    return this.http.post<{message: string, requests: any}>("http://localhost:9090/employee/submitRequest",reqRef);
   }
 
-  retrieveAllRequests(){
-    return this.http.get<{message: string, requests: any}>("http://localhost:9090/employee/retrieveRequests");
+  retrieveAllRequests(username:any){
+    return this.http.get<{message: string, requests: any}>("http://localhost:9090/employee/retrieveRequests/" + username);
   }
 }

@@ -11,14 +11,12 @@ import { RequestService } from './request.service';
 })
 export class RequestComponent implements OnInit {
 
-  username : String = JSON.parse(sessionStorage.loginObject)["userName"];
+  username : String;
   requests : Array<EmployeeRequests> = [];
   loading : boolean = false;
   itemQuantity = 0; //placeholder because database has no quantity
 
-  name:any;
   productID:any;
-  quantity:any;
   description:any;
   message:any;
 
@@ -26,19 +24,26 @@ export class RequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.requestService.retrieveAllRequests().subscribe((result) => {
-      console.log(result.requests)
+    this.username = JSON.parse(sessionStorage.loginObject)["userName"];
+    this.requestService.retrieveAllRequests(this.username).subscribe((result) => {
+      //console.log(result.requests)
       this.requests = result.requests;
       this.loading = false;
     })
   }
 
   submitRequest(reqRef:any) {
-    console.log(reqRef);
-    this.requestService.submitRequest(reqRef).subscribe(result => this.message = result,error => this.message = error);
-    this.name = "";
+    //console.log(reqRef);
+    reqRef.name = this.username;
+    this.requestService.submitRequest(reqRef).subscribe(result => {
+      this.message = result.message;
+      this.requests = result.requests;
+    },
+      error => {
+        this.message = error;
+    });
+
     this.productID = "";
-    this.quantity = "";
     this.description = "";
   }
 

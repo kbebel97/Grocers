@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Employee</title>
+  <title>Register</title>
   <style>
     form {
       border-style: double;
-      height: 80%;
+      height: auto;
       margin: 1% 1% 1% 1%;
       padding: 1%;
     }
@@ -18,77 +18,79 @@
   <div class="login-form" id="main">
   <form #signupRef="ngForm" (ngSubmit)="registerUser(signupRef.value)">
     <h1><b>Registration form</b></h1>
+    <h2>
+      Personal Information
+    </h2>
     <h3>
-      FirstName
+      First Name
       <br />
-      <input type="text" class="form-control" name="firstName" ngModel [(ngModel)]="firstName" /><br>
+      <input type="text" class="form-control" name="firstName" ngModel [(ngModel)]="firstName" required/><br>
     </h3>
     <h3>
-      Lastname
+      Last Name
       <br />
-      <input type="text" class="form-control" name="lastName" ngModel [(ngModel)]="lastName" /><br>
+      <input type="text" class="form-control" name="lastName" ngModel [(ngModel)]="lastName" required/><br>
     </h3>
     <h3>
-        Username
-        <br />
-        <input type="text" class="form-control" name="userName" ngModel [(ngModel)]="userName" /><br>
-      </h3>
-      <h3>
-        EmailId
-        <br />
-        <input type="text" class="form-control" name="email" ngModel [(ngModel)]="email" /><br>
-      </h3>
-      <h3>
-        Password
-        <br />
-        <input type="password" class="form-control" name="password" ngModel [(ngModel)]="password" /><br>
-      </h3>
-      <h3>
-        Date of Birth
-        <br />
-        <input type="date" class="form-control" name="dateOfBirth" ngModel [(ngModel)]="dateOfBirth" /><br>
-      </h3>
-      <h3>
-        Phone Number
-        <br />
-        <input type="number" class="form-control" name="phoneNumber" ngModel [(ngModel)]="phoneNumber" /><br>
-      </h3>
-      <h3>
-        Address
-      </h3>
-        <br />
-        <h3>
-          Street
-          <br />
-          <input type="text" class="form-control" name="street" ngModel [(ngModel)]="street" /><br>
-        </h3>
-        <h3>
-         Apt
-          <br />
-          <input type="number" class="form-control" name="apt" ngModel [(ngModel)]="apt" /><br>
-        </h3>
-        <h3>
-          City
-          <br />
-          <input type="text" class="form-control" name="city" ngModel [(ngModel)]="city" /><br>
-        </h3>
-        <h3>
-          State
-          <br />
-          <input type="text" class="form-control" name="state" ngModel [(ngModel)]="state" /><br>
-        </h3>
-        <h3>
-         Zipcode
-          <br />
-          <input type="number" class="form-control" name="zipcode" ngModel [(ngModel)]="zipcode" /><br>
-        </h3>
-
-        <input type="submit" class="btn btn-light" value="Submit" />
-        <input type="reset" class="btn btn-light" value="Clear" />
-        <div>
-          {{message}}
-        </div>
-      </form>
-      </div>
-    </body>
-    </html>
+      Username
+      <br />
+      <input type="text" class="form-control" name="userName" ngModel [(ngModel)]="userName" required/><br>
+    </h3>
+    <h3>
+      Email Address
+      <br />
+      <input type="text" class="form-control" name="email" ngModel [(ngModel)]="email" required/><br>
+    </h3>
+    <h3>
+      Password
+      <br />
+      <input type="password" class="form-control" name="password" ngModel [(ngModel)]="password" required/><br>
+    </h3>
+    <h3>
+      Date of Birth
+      <br />
+      <input type="date" class="form-control" name="dateOfBirth" ngModel [(ngModel)]="dateOfBirth" required/><br>
+    </h3>
+    <h3>
+      Phone Number
+      <br />
+      <input type="number" class="form-control" name="phoneNumber" ngModel [(ngModel)]="phoneNumber" required/><br>
+    </h3>
+    <h2>
+      Address
+    </h2>
+    <h3>
+      Street
+      <br />
+      <input type="text" class="form-control" name="street" ngModel [(ngModel)]="street" required/><br>
+    </h3>
+    <h3>
+     Apt
+      <br />
+      <input type="number" class="form-control" name="apt" ngModel [(ngModel)]="apt" required/><br>
+    </h3>
+    <h3>
+      City
+      <br />
+      <input type="text" class="form-control" name="city" ngModel [(ngModel)]="city" required/><br>
+    </h3>
+    <h3>
+      State
+      <br />
+      <input type="text" class="form-control" name="state" ngModel [(ngModel)]="state" required/><br>
+    </h3>
+    <h3>
+     Zipcode
+      <br />
+      <input type="number" class="form-control" name="zipcode" ngModel [(ngModel)]="zipcode" required/>
+      <br>
+    </h3>
+    <input type="submit" class="btn btn-light" value="Submit" style="margin: 2px;" [disabled]="!signupRef.form.valid"/>
+    <input type="reset" class="btn btn-light" value="Clear" style="margin: 2px;" />
+    <div>
+      {{message}}
+    </div>
+  </form>
+</div>
+</body>
+</html>

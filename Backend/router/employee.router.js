@@ -7,7 +7,7 @@ router.post("/login",EmployeeController.login);
 router.post("/signup", EmployeeController.signup);
 router.post("/submitRequest", EmployeeController.submitRequest);
 router.get("/allEmployeeDetails", EmployeeController.getAllEmploeeDetails);
-router.get("/retrieveRequests", EmployeeController.retrieveRequests);
+router.get("/retrieveRequests/:username", EmployeeController.retrieveRequests);
 router.put("/updateEmployeePassword", EmployeeController.updateEmployeePassword);
 
 module.exports=router;

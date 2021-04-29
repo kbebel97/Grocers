@@ -83,40 +83,6 @@ let updateEmployeePassword = (req, res) => {
   let name = req.body.name;
   let newPassword = req.body.newPassword;
 
-  /*
-  let fetchedEmployee;
-  EmployeeModel.findOne({ userName: name })
-    .then( employee => {
-      if (!employee) {
-        res.send("Employee does not exist");
-      } else {
-        fetchedEmployee = employee;
-        
-        bcrypt.compare(req.body.currentPassword, employee.password).then( (result) => {
-          if (result) {
-            if (req.body.newPassword == req.body.newPassword2) {
-              EmployeeModel.updateOne({userName:name},{$set:{password:newPassword}},(err,result)=> {
-                if(!err){
-                    if(result.nModified>0){
-                            res.send("Password updated succesfully")
-                    }else {
-                            res.send("Record is not available");
-                    }
-                    return res;
-                }else {
-                    res.send("Error generated "+err);
-                }
-              });
-            } else {
-              res.send("New passwords do not match");
-            }
-          } else {
-            res.send("Password is incorrect");
-          }
-        });
-      }
-    });
-    */
   let fetchedEmployee;
   EmployeeModel.findOne({ userName: name })
     .then( employee => {
@@ -132,7 +98,7 @@ let updateEmployeePassword = (req, res) => {
                   if(result.nModified>0){
                           res.send("Password updated succesfully")
                   }else {
-                          res.send("Record is not available");
+                          res.send("Password has not been modified");
                   }
                   return res;
               }else {
@@ -149,30 +115,31 @@ let updateEmployeePassword = (req, res) => {
     });
 }
 
-//cannot retrieve sessionStorage username to filter
 let retrieveRequests = (req, res, next) => {
-RequestModel.find({/*"username" : "employee"*/}).then((fetchedRequests)=> {
+console.log("hello");
+  RequestModel.find({"username" : req.params.username}).then((fetchedRequests)=> {
       res.status(200).json({
-          message: 'Requests fetched!',
+          message: "Requests fetched!",
           requests: fetchedRequests
-        });
-  })
+      });
+  });
 }
 
 let submitRequest = (req, res) => {
   let request = new RequestModel({
     username: req.body.name,
+    productID: req.body.productID,
     description: req.body.description,
     status: "Pending"    
   });
 
-  request.save((err, result) => {
-      if (!err) {
-          res.send("Request stored successfully ")
-          //res.json({"msg":"Record stored successfully"})
-      } else {
-          res.send("Request didn't store ");
-      }
+  request.save().then( () => {
+    RequestModel.find({"username" : req.body.name}).then((fetchedRequests)=> {
+      res.status(200).json({
+          message: "Request stored sucessfully",
+          requests: fetchedRequests
+      });
+    });
   });
 }
 
