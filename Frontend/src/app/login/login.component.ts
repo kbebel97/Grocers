@@ -50,11 +50,11 @@ export class LoginComponent implements OnInit {
               this.loginSuccess = true;
               sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
-            } else if (userName == data.username && password == data.password && data.numAttempts == 3) {
+            } else if (userName == data.userName && data.numAttempts == 3) {
               this.lockedUser = true;
               sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
-            } else if (userName == data.username && password != data.password) {
+            } else if (userName == data.userName && password != data.password) {
               this.numberOfAttempts = this.numberOfAttempts + 1;
               console.log(this.numberOfAttempts);
               if (this.numberOfAttempts == 3) {

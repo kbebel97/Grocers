@@ -211,7 +211,7 @@ let lockUserAccount = (req, res) => {
     let username = req.body.userName;
     let numAttempts = req.body.numAttempts;
 
-    UserModel.updateOne({ username: username }, { $set: { numAttempts: numAttempts } }, (err, result) => {
+    UserModel.updateOne({ userName: username }, { $set: { numAttempts: numAttempts } }, (err, result) => {
         if (!err) {
             if (result.nModified > 0) {
                 res.send("Record updated succesfully")
