@@ -4,15 +4,17 @@ const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 
 let signup = (req, res, next) => {
-    //we install npm install --save bcrypt so that we can hash our password so it is secure
-    bcrypt.hash(req.body.password, 10)
-      .then(hash => {
         const User = new UserModel({
           email: req.body.email,
-          password: hash,
+          password: req.body.password,
           userName: req.body.userName,
           firstName: req.body.firstName,
-          lastName: req.body.lastName
+          lastName: req.body.lastName,
+          paymentMethods: 0,
+          numAttempts: 0,
+          dateOfBirth: req.body.date,
+          phoneNumber: req.body.phoneNumber,
+          shippingAddresses: req.body.addresses
         });
         User.save()
           .then(result => {
@@ -26,7 +28,7 @@ let signup = (req, res, next) => {
               error: err
             })
           })
-      });
+      
   }
 
 let login = (req, res, next) => {
@@ -95,10 +97,52 @@ let userById = (req, res, next, id) => {
               });
           }
           req.profile = user //adds profile object in req object with user info
-          console.log("User profile " + user);
           next();
       });
 }
+
+
+//Update user funds
+let updateUserFunds = (req, res) => {
+    let userId = req.body.userId;
+    let updatedFunds = req.body.updatedFunds;
+
+    UserModel.updateOne({ _id: userId }, { $set: { paymentMethods: updatedFunds } }, (err, result) => {
+        if (!err) {
+            if (result.nModified > 0) {
+                res.send("Funds updated succesfully please login back again")
+            } else {
+                res.send("Record is not available");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
+}
+
+let editUserDetails = (req, res) => {
+    let userId = req.body._id;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let email = req.body.email;
+    let password = req.body.password;
+    let phoneNumber = req.body.phoneNumber;
+    let shippingAddresses= req.body.addresses;
+
+    UserModel.updateOne({ _id: userId }, { $set: { firstName: firstName, lastName: lastName, email: email, password: password, phoneNumber: phoneNumber, shippingAddresses: shippingAddresses}}, (err, result) => {
+        if (!err) {
+            if (result.nModified > 0) {
+                res.send("Profile updated succesfully please login back again")
+            } else {
+                res.send("Record is not available");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
+}
+
+//cart related code
 
 let addToCart = (req, res, next) =>{
   const prodId = req.body.productId;
@@ -111,8 +155,6 @@ let addToCart = (req, res, next) =>{
             res.json(result);
         });
 }
-
-
 
 let getCartItems = (req, res, next) =>{
   req.profile
@@ -140,4 +182,5 @@ let cartDeleteProduct = (req, res, next) => {
       .catch(err => console.log(err));
 }
 
-module.exports = { login, signup, test, getAllUserDetails, userById, addToCart, getCartItems, cartDeleteProduct};
+module.exports = { login, signup, test, getAllUserDetails, userById, updateUserFunds, editUserDetails,
+  addToCart, getCartItems, cartDeleteProduct};

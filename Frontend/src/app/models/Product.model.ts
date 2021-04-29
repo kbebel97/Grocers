@@ -2,5 +2,7 @@ export interface Product{
   _id : string,
   name : string,
   description : string,
-  price : number
+  price : number,
+  quantity : number,
+  imageUrl : string
 }

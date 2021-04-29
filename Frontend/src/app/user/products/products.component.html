@@ -1,0 +1,24 @@
+<main>
+    <h1>My Products</h1>
+    <p>List of all the products...</p>
+    <div class="grid">
+        <div *ngFor="let product of products">
+            <article class="card product-item">
+                <header class="card__header">
+                    <h1 class="product__title">{{product.name}}</h1>
+                </header>
+                <div class="card__image">
+                    <img style="width:200px;height:200px;" src={{product.imageUrl}} alt={{product.imageUrl}}>
+                </div>
+                <div class="card__content">
+                    <h2 class="product__price">Price: ${{product.price}}</h2>
+                    <h2 class="product__price">Quantity: {{product.quantity}}</h2>
+                    <p class="product__description">{{product.description}}</p>
+                </div>
+                <span>
+                    <button (click)="addProductToCart(product._id)" class="btn" style="margin-left: 10px">Add to cart</button>
+                </span>
+            </article>
+        </div>
+    </div>
+</main>

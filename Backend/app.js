@@ -9,7 +9,8 @@ var Product = require("./router/product.router.js");
 var Employee = require("./router/employee.router.js");
 var User = require("./router/user.router.js");
 var Admin = require("./router/admin.router.js");
-var Order = require("./router/order.router.js")
+var Order = require("./router/order.router.js");
+var userRequest = require("./router/userRequests.router");
 
 //Database URL Details 
 let url = "mongodb://localhost:27017/grocers";
@@ -41,7 +42,7 @@ mongoose.connect(url).then(() => {//shamanthaka changed to local db connection
 //Connect the data 
 mongoose.connection
 
-app.use((req, res, next) => {
+app.use('', (req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
@@ -50,7 +51,6 @@ app.use((req, res, next) => {
         "Access-Control-Allow-Methods",
         "GET, POST, PATCH, DELETE, OPTIONS, PUT"
     );
-    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 
@@ -61,6 +61,7 @@ app.use("/user",User);
 app.use("/employee",Employee);
 app.use("/admin", Admin);
 app.use("/order", Order);
+app.use("/userRequest", userRequest);
 
 
 

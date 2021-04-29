@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/login/login.service';
-import { Product } from 'src/app/model/product';
-import { User } from 'src/app/models/model.user';
+import { Product } from 'src/app/models/product';
+import { User } from './../../models/model.user';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from './../../services/product.service';
 
@@ -38,7 +38,7 @@ export class ProductListComponent implements OnInit {
     let loggedInUser = this.loginService.getUserFromLocal();
     const authUser = loggedInUser['fetchedUser']
     const userId = authUser['_id'];
-    const token = loggedInUser.token;
+    const token = loggedInUser['token'];
     return this.cartService.addToCort(userId, id, token).subscribe(result =>{
       return this.goToCartList();  
     });

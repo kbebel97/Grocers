@@ -26,57 +26,12 @@ export class OrdersComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.loading = true;
     this.OrdersService.retrieveAllOrders().subscribe((result) => {
       console.log(result.orders)
       this.orders = result.orders;
+      this.loading = false;
     })
-
-
-    // let order0 : Order = {
-    //   _id : "0",
-    //   _userId : "0",
-    //   status: "shipped",
-    //   date: "04/26/2021 1:40pm",
-    //   email : "dummyemail@gmail.com",
-    //   userName : "dummyuserName",
-    //   orderItems : [{_id : "0", product : {_id : "0", name: "Playstation5 consolelll", description : "console", price : 500}, Quantity: 2}]
-    // }
-
-    // let order : Order = {
-    //   _id : "0",
-    //   _userId : "0",
-    //   status: "shipped",
-    //   date: "04/26/2021 1:40pm",
-    //   email : "dummyemail@gmail.com",
-    //   userName : "dummyuserName",
-    //   orderItems : [{_id : "0", product : {_id : "0", name: "Playstation5 conselling fifhfs", description : "console", price : 500}, Quantity : 6 }, {_id : "0", product : {_id : "0", name: "PS5", description : "console", price : 500}, Quantity : 6 }, {_id : "0", product : {_id : "0", name: "PS5", description : "console", price : 500}, Quantity : 6 }, {_id : "0", product : {_id : "0", name: "PS5", description : "console", price : 500}, Quantity : 6 } ]
-    // }
-
-    // let order1 : Order = {
-    //   _id : "0",
-    //   _userId : "0",
-    //   status: "shipped",
-    //   date: "04/26/2021 1:40pm",
-    //   email : "dummyemail@gmail.com",
-    //   userName : "dummyuserName",
-    //   orderItems : [{_id : "0", product : {_id : "0", name: "Playstation5", description : "console", price : 500}, Quantity : 6 }, {_id : "0", product : {_id : "0", name: "PS5", description : "console", price : 500}, Quantity : 6 }, {_id : "0", product : {_id : "0", name: "PS5", description : "console", price : 500}, Quantity : 6 }, {_id : "0", product : {_id : "0", name: "x", description : "l", price : 2}, Quantity : 6 } ]
-    // }
-    // this.orders.push(order0);
-    // this.orders.push(order1);
-    // this.orders.push(order);
-    // // this.orders.push(order1);
-
-    // console.log(72 * this.orders.length);
-    // this.orders.push(order);
-    // this.orders.push(order);
-    // this.orders.push(order);
-    // this.orders.push(order1);
-    // this.orders.push(order);
-    // this.orders.push(order);
-    // this.orders.push(order);
-    // this.orders.push(order);
-
-
   }
 
   changeOrderStatus(status: any, order : Order){
@@ -179,7 +134,7 @@ export class OrdersComponent implements OnInit {
       date: new Date(),
       email : "Kacper@gmail.com",
       userName : "kacpers_username",
-      orderItems : [{product : {_id : "0", name: "Playstation5", description : "console", price : 500}, Quantity : 6 }, {product : {_id : "0", name: "PS5", description : "console", price : 500}, Quantity : 6 }, { product : {_id : "0", name: "PS5", description : "console", price : 500}, Quantity : 6 }, {product : {_id : "0", name: "x", description : "l", price : 2}, Quantity : 6 } ]
+      orderItems : [{product : {_id : "0", name: "Playstation5", description : "console", price : 500, quantity: 2, imageUrl: ""}, Quantity : 6 }, {product : {_id : "0", name: "PS5", description : "console", price : 500, quantity: 2, imageUrl: ""}, Quantity : 6 }, { product : {_id : "0", name: "PS5", description : "console", price : 500, quantity: 2, imageUrl: ""}, Quantity : 6 }, {product : {_id : "0", name: "x", description : "l", price : 2, quantity: 2, imageUrl: ""}, Quantity : 6 } ]
     }
 
 
