@@ -119,4 +119,26 @@ let updateUserFunds = (req, res) => {
     })
 }
 
-module.exports = { login, signup, test, getAllUserDetails, userById, updateUserFunds};
+let editUserDetails = (req, res) => {
+    let userId = req.body._id;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let email = req.body.email;
+    let password = req.body.password;
+    let phoneNumber = req.body.phoneNumber;
+    let shippingAddresses= req.body.addresses;
+
+    UserModel.updateOne({ _id: userId }, { $set: { firstName: firstName, lastName: lastName, email: email, password: password, phoneNumber: phoneNumber, shippingAddresses: shippingAddresses}}, (err, result) => {
+        if (!err) {
+            if (result.nModified > 0) {
+                res.send("Profile updated succesfully please login back again")
+            } else {
+                res.send("Record is not available");
+            }
+        } else {
+            res.send("Error generated " + err);
+        }
+    })
+}
+
+module.exports = { login, signup, test, getAllUserDetails, userById, updateUserFunds, editUserDetails};
