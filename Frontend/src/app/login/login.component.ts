@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
                 loginRef.numAttempts = this.numberOfAttempts;
                 this.loginService.lockUserAccount(loginRef).subscribe((result: string) => {
                   console.log(result);
+                  this.router.navigate(['./logUserTicket']);
                 })
               }
             } else {
