@@ -3,6 +3,8 @@ let UserModel = require('../model/user.model.js');
 const userRequestsModel = require("../model/userRequests.model ");
 
 let postRequest = (req, res, next) => {
+    console.log('Hello');
+	console.log(req.body);
     let userRequest = new UserRequestsModel({
         userId : req.body.userId,
         userName : req.body.userName,
@@ -11,9 +13,9 @@ let postRequest = (req, res, next) => {
         date: req.body.date
     });
     userRequest.save().then(userRequest => {
-        console.log('Hello');
+        
         res.status(201).json({
-          message: 'User Request created!',
+          message: 'Request Submitted!',
           userRequest: userRequest
         });
       })
@@ -89,6 +91,9 @@ let getOldestRequests = (req, res, next) => {
     })
 
 }
+
+
+
 
 
 
