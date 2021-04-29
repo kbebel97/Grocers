@@ -25,7 +25,7 @@
       <input type="text" name="email" [(ngModel)]="email" required />
     </h3>
     <input type="reset" value="Clear" />
-    <input type="submit" value="Delete Employee" />
+    <input type="submit" value="Delete Employee" [disabled]="!employeeRef.form.valid"  />
     <div>
       {{message}}
     </div>
