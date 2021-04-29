@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Employee</title>
+  <style>
+    form {
+      border-style: double;
+      height: 80%;
+      margin: 1% 1% 1% 1%;
+      padding: 1%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form #fundsRef="ngForm" (ngSubmit)="updateFunds(fundsRef.value)">
+    <h1><b>Update Funds</b></h1>
+    <h3>
+      Current Amount $ {{currentFunds}}
+      <br />
+    </h3>
+    <h3>
+      Update Amount To
+      <br />
+      $ <input type="number" name="updatedFunds" [(ngModel)]="updatedFunds" required />
+    </h3>
+    <input type="submit" value="Updated Funds" />
+    <div>
+      {{message}}
+    </div>
+  </form>
+</body>
+</html>
