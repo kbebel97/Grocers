@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
               console.log(this.numberOfAttempts);
               if (this.numberOfAttempts == 3) {
                 console.log("User account is locked");
+                sessionStorage.loginObject = JSON.stringify(data);
                 loginRef.numAttempts = this.numberOfAttempts;
                 this.loginService.lockUserAccount(loginRef).subscribe((result: string) => {
                   console.log(result);

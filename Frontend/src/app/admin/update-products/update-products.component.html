@@ -13,6 +13,7 @@
       padding: 1%;
     }
   </style>
+
 </head>
 
 <body>
@@ -27,14 +28,15 @@
     <h3>
       Price
       <br />
-      $ <input type="number" name="price" [(ngModel)]="price"  />
+      $ <input type="number" min="0"  oninput="validity.valid||(value='')" name="price" [(ngModel)]="price"  required/>
     </h3>
     <input type="reset" value="Clear" />
-    <input type="submit" value="Update Product" />
+    <input type="submit" value="Update Product" [disabled]="!updateRef.form.valid" />
     <div>
       {{productMessage}}
     </div>
     </form>
+
     <form #quantityRef="ngForm" (ngSubmit)="updateQuantity(quantityRef.value)">
     <h1><b>Update Quantity</b></h1>
     <h3>
@@ -45,10 +47,10 @@
     <h3>
       Quantity
       <br />
-      <input type="number" name="quantity" [(ngModel)]="quantity" />
+      <input type="number" min="0" oninput="validity.valid||(value='')" name="quantity" [(ngModel)]="quantity" required/>
     </h3>
     <input type="reset" value="Clear" />
-    <input type="submit" value="Update quantity" />
+    <input type="submit" value="Update quantity" [disabled]="!quantityRef.form.valid" />
     <div>
       {{quantityMessage}}
     </div>

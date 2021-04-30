@@ -26,7 +26,7 @@
     </h3>
     
     <input type="reset" value="Clear" />
-    <input type="submit" value="Delete Product" />
+    <input type="submit" value="Delete Product" [disabled]="!deleteRef.form.valid" />
     <div>
       {{message}}
     </div>

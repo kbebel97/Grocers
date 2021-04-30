@@ -23,11 +23,12 @@ export class RaiseTicketComponent implements OnInit {
   }
   raiseTicket(ticketRef: any) {
   //console.log("raise ticket")
-   let ticket = {userId:this.sessionObj.userId, userName:this.sessionObj.username, email: this.sessionObj.email,description:this.description, date: new Date()}
+    let ticket = { userId: this.sessionObj._id, userName: this.sessionObj.userName, email: this.sessionObj.email,description:this.description, date: new Date()}
    console.log(ticket)
     this.raiseTicketService.logUserRequest(ticket).subscribe((result) => {
     this.message = result.message;
     })
-    
+
+    this.description="";
   }
 }

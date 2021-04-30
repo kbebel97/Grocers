@@ -26,9 +26,9 @@
     <h3>
       Update Amount To
       <br />
-      $ <input type="number" name="updatedFunds" [(ngModel)]="updatedFunds" required />
+      $ <input type="number"  min="0" oninput="validity.valid||(value='')" name="updatedFunds" [(ngModel)]="updatedFunds" required />
     </h3>
-    <input type="submit" value="Updated Funds" />
+    <input type="submit" value="Updated Funds" [disabled]="!fundsRef.form.valid" />
     <div>
       {{message}}
     </div>
