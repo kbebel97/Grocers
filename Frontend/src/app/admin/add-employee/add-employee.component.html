@@ -45,7 +45,7 @@
       <input type="text" name="lastName" [(ngModel)]="lastName" required />
     </h3>
     <input type="reset" value="Clear" />
-    <input type="submit" value="Add Employee" />
+    <input type="submit" value="Add Employee" [disabled]="!employeeRef.form.valid" />
     <div>
       {{message}}
     </div>
