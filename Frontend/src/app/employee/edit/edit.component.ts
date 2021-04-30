@@ -6,9 +6,10 @@ import { EditService } from './edit.service';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
+
 export class EditComponent implements OnInit {
 
-  name:any;
+  username : String;
   currentPassword:any;
   newPassword:any;
   newPassword2:any;
@@ -17,31 +18,19 @@ export class EditComponent implements OnInit {
   constructor(public editService: EditService) { }
 
   ngOnInit(): void {
+    this.username = JSON.parse(sessionStorage.loginObject)["userName"];
   }
 
   resetPassword(empRef: any) {
-    console.log(empRef);
+    //console.log(empRef);
+    empRef.name = this.username;
     this.editService.updateEmployeePassword(empRef).subscribe((result:string)=> {
       this.message=result;
     });
-    this.name = "";
+
     this.currentPassword = "";
     this.newPassword = "";
     this.newPassword2 = "";
-    // Get current password id:currPass
-    // Get new password id:newPass
-    // Get confirmation id:confNewPass
-
-    // Check employee password in database
-    //  If password is correct
-    //    Confirm that new password matches confirmation password AND new password is not old password
-    //    If confirmed
-    //      Change employee password in database
-    //      Alert user that password has been changed
-    //      alert("Password has been sucessfully changed");
-    //  If password is incorrect
-    //    Alert user that password was incorrect
-    //    alert("Password is incorrect");
   }
 
 }

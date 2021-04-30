@@ -50,18 +50,20 @@ export class LoginComponent implements OnInit {
               this.loginSuccess = true;
               sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
-            } else if (userName == data.username && password == data.password && data.numAttempts == 3) {
+            } else if (userName == data.userName && data.numAttempts == 3) {
               this.lockedUser = true;
               sessionStorage.loginObject = JSON.stringify(data);
               keepChecking = false;
-            } else if (userName == data.username && password != data.password) {
+            } else if (userName == data.userName && password != data.password) {
               this.numberOfAttempts = this.numberOfAttempts + 1;
               console.log(this.numberOfAttempts);
               if (this.numberOfAttempts == 3) {
                 console.log("User account is locked");
+                sessionStorage.loginObject = JSON.stringify(data);
                 loginRef.numAttempts = this.numberOfAttempts;
                 this.loginService.lockUserAccount(loginRef).subscribe((result: string) => {
                   console.log(result);
+                  this.router.navigate(['./logUserTicket']);
                 })
               }
             } else {
@@ -72,7 +74,7 @@ export class LoginComponent implements OnInit {
 
         if (this.loginSuccess) {
           //Give the routing path of user
-          this.router.navigate(['/prodPortal/products']);
+          this.router.navigate(['./prodPortal/products']);
           console.log("Welcome to user portal");
         } else if (this.lockedUser) {
           console.log("The user is locked")

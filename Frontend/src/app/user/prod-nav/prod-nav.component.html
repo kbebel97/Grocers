@@ -1,25 +1,27 @@
-<header class="main-header">
-    <nav class="main-header__nav">
-      <ul class="main-header__item-list">
-        <li class="main-header__item">
-          <a class="nav-link router-link" routerLink="/prodPortal/products" routerLinkActive="active">Products</a>
-        </li>
-        <li class="main-header__item">
-          <a class="nav-link router-link" routerLink="/prodPortal/cart" routerLinkActive="active">Adding Products</a>
-        </li>
-        <li class="main-header__item">
-          <a class="nav-link router-link" routerLink="/prodPortal/status" routerLinkActive="active">Order Status</a>
-        </li>
-        <li class="main-header__item">
-          <a class="nav-link router-link" routerLink="/prodPortal/profile" routerLinkActive="active">Edit Profile</a>
-        </li>
-        <li class="main-header__item">
-          <a class="nav-link router-link" routerLink="/prodPortal/funds" routerLinkActive="active">Update Funds</a>
-        </li>
-        <li class="main-header__item">
-          <a class="nav-link router-link" routerLink="" routerLinkActive="active">Logout</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <router-outlet></router-outlet>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<nav class="nav navbar-light bg-light" style="padding: 20px; border-bottom: solid black 1px; ">
+
+  <a class="navbar-brand" routerLink="/prodPortal/products" style="color: black;">{{username}}</a>
+
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link router-link" routerLink="/prodPortal/products" routerLinkActive="active">Products</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link router-link" routerLink="/prodPortal/cart" routerLinkActive="active">Cart</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link router-link" routerLink="/prodPortal/status" routerLinkActive="active">Orders</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link router-link" routerLink="/prodPortal/profile" routerLinkActive="active">Profile</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link router-link" routerLink="/prodPortal/funds" routerLinkActive="active">Payment</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link router-link" routerLink="">Log Out</a>
+  </li>
+</nav>
+<router-outlet></router-outlet>

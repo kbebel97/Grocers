@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Employee Edit</title>
+        <title>Manage Requests</title>
         <style>
-            form {
+            .divBorder {
                 border-style: double;
-                height: 80%;
+                height: auto;
                 margin: 1% 1% 1% 1%;
                 padding: 1%;
             }
@@ -17,34 +17,48 @@
 	
 	<body>
 
-        <form #productRef="ngForm" (ngSubmit)="submitRequest(productRef.value)">
-            <h1><b>Submit Product Requesst</b></h1>
-            <h3>
-                Product ID
-                <br/>
-                <input type="text" name="productID" required/>
-            </h3>
-            <h3>
-                Item Quantity
-                <br/>
-                <input type="number" name="quantity" required/>
-            </h3>
-            <h3>
-                Description
-                <br/>
-                <input type="text" name="description" rows="4" required/>
-            </h3>
+        <div class="divBorder">
+            <form #reqRef="ngForm" (ngSubmit)="submitRequest(reqRef.value)">
+                <h1><b>Submit Product Request</b></h1>
+                <h3>
+                    Product ID
+                    <br/>
+                    <input type="text" name="productID" [(ngModel)]="productID" required/>
+                </h3>
+                <h3>
+                    Description
+                    <br/>
+                    <input type="text" name="description" [(ngModel)]="description" rows="4" required/>
+                </h3>
 
-            <input type="reset" value="Clear"/>
-            <input type="submit" value="Submit Request"/>
-        </form>
-        <table>
-            <tr>
-                <th>Product ID</th>
-                <th>Quantity</th>
-                <th>Description</th>
-                <th>Status</th>
-            </tr>
-        </table>
+                <input type="reset" value="Clear" style="margin: 2px;"/>
+                <input type="submit" value="Submit Request" style="margin: 2px;" [disabled]="!reqRef.form.valid"/>
+                <div>
+                    {{message}}
+                </div>
+            </form>
+            <br/>
+            <table style=" display: flex; flex-flow: column;">
+                <thead>
+                  <tr class="row" style="padding-top: 20px; padding-bottom: 20px; padding-right: 16px; background-color: seashell; border-bottom: 3px solid black; margin: 0; height: inherit;">
+                    <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Product ID</div></th>
+                    <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Description</div></th>
+                    <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Status</div></th>
+                  </tr>
+                </thead>
+                <tbody id="tbody" style="flex-grow : 1; overflow-y: scroll; display:block; background-color: rgba(226, 248, 231, 0.97);" *ngIf="requests.length != 0">
+                  <tr class="row" id="selected_row" *ngFor="let request of requests; let i = index" style="width: 100%; border: none; outline: none; padding: 0;" style="padding-top: 10px; padding-bottom: 10px; margin: 0;" [ngStyle]="{backgroundColor: i % 2 !== 0 ? 'rgba(226, 248, 231, 0.97)' : 'rgba(190, 239, 200, 0.97)'}" #tbody>
+                    <th class="col" style="padding: 0; text-align: center; display: block; width: 20px; word-wrap: break-word; margin: auto;"><div>{{request.productID}}</div></th>
+                    <th class="col" style="padding: 0; text-align: center; display: block; width: 20px; word-wrap: break-word; margin: auto;"><div>{{request.description}}</div></th>
+                    <th class="col" style="padding: 0; text-align: center; display: block; width: 20px; word-wrap: break-word; margin: auto;"><div>{{request.status}}</div></th>
+                  </tr>
+                </tbody>
+                <tbody id="tbody" style="flex-grow : 1; overflow-y: scroll; display:block; background-color: rgba(226, 248, 231, 0.97);" *ngIf="requests.length == 0">
+                  <div style="display: flex; justify-content: center; align-items: center; height: 100%">
+                    <h1>Empty</h1>
+                  </div>
+                </tbody>
+              </table>
+        </div>
 	</body>
 </html>

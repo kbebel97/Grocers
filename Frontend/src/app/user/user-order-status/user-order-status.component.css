@@ -1,11 +1,18 @@
-table{
-  height: calc(100% - 56px);
+table {
+  height: calc(100% - 77px);
 }
+
 * {
   box-sizing: border-box;
 }
-#foot{
-  padding-top: 20px; padding-bottom: 20px; background-color: seashell; border-top: 3px solid black; margin: 0; height: inherit;
+
+#foot {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: seashell;
+  border-top: 3px solid black;
+  margin: 0;
+  height: inherit;
 }
 
 /* Style the search field */
@@ -31,9 +38,9 @@ form.example button {
   cursor: pointer;
 }
 
-form.example button:hover {
-  background: #0b7dda;
-}
+  form.example button:hover {
+    background: #0b7dda;
+  }
 
 /* Clear floats */
 form.example::after {
@@ -65,7 +72,7 @@ form.example::after {
 }
 
 
-.dropup-content{
+.dropup-content {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -86,7 +93,7 @@ form.example::after {
   width: 100%;
 }
 
-.dropup-content a{
+.dropup-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -97,24 +104,41 @@ form.example::after {
 }
 
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
-.dropup-content a:hover {background-color: #ddd;}
+.dropup-content a:hover {
+  background-color: #ddd;
+}
 
 
-.dropdown:hover .dropdown-content {display: block; max-height: 200px; height: fit-content; overflow-y: auto;}
+.dropdown:hover .dropdown-content {
+  display: block;
+  max-height: 200px;
+  height: fit-content;
+  overflow-y: auto;
+}
 
-.dropdown:hover .dropup-content {display: block; max-height: 200px; height: fit-content; overflow-y: auto;}
+.dropdown:hover .dropup-content {
+  display: block;
+  max-height: 200px;
+  height: fit-content;
+  overflow-y: auto;
+}
 
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
 
 
 @media only screen and (max-width: 1140px) {
-  .dropdown-content{
+  .dropdown-content {
     right: 0;
-    }
-  .dropup-content{
+  }
+
+  .dropup-content {
     right: 0;
   }
 }

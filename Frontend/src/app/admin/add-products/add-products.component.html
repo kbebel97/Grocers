@@ -27,12 +27,12 @@
     <h3>
       Price
       <br />
-      $ <input type="number" name="price" [(ngModel)]="price" required />
+      $ <input type="number" min="0" oninput="validity.valid||(value='')" name="price" [(ngModel)]="price" required />
     </h3>
     <h3>
       Quantity
       <br />
-      <input type="number" name="quantity" [(ngModel)]="quantity" required />
+      <input type="number"  min="0" oninput="validity.valid||(value='')" name="quantity" [(ngModel)]="quantity" required />
     </h3>
     
     <h3>
@@ -46,7 +46,7 @@
      <input type="text" name="imageUrl" [(ngModel)]="imageUrl" required />
     </h3>
     <input type="reset" value="Clear" />
-    <input type="submit" value="Add Product" />
+    <input type="submit" value="Add Product" [disabled]="!productRef.form.valid" />
     <div>
       {{message}}
     </div>

@@ -9,10 +9,12 @@ import { AdminService } from '../admin.service';
 export class UpdateProductsComponent implements OnInit {
 
 name:any;
+name1:any;
 price:any;
 quantity:any;
-description:any;
-message:any;
+
+productMessage:any;
+quantityMessage:any;
 
   constructor(public adminService: AdminService) { }
 
@@ -21,12 +23,21 @@ message:any;
    updateProduct(updateRef: any) {
    console.log(updateRef);
     this.adminService.updateProductPrice(updateRef).subscribe((result:string)=> {
-      this.message=result;
+      this.productMessage=result;
      })
     this.name = "";
     this.price = "";
-    this.quantity = "";
-    this.description= "";
+    
+    
   }
-
+  updateQuantity(quantityRef: any){
+    console.log(quantityRef)
+   this.adminService.updateProductQuantity(quantityRef).subscribe((result:string)=> {
+      this.quantityMessage=result;
+     })
+     this.name1= "";
+    this.quantity = "";
+    
+    
+  }
 }

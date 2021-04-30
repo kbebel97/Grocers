@@ -14,7 +14,8 @@ const userSchema = mongoose.Schema({
   lastName: { type: String, required: true},
   paymentMethods: { type: Number, required: false},
   shippingAddresses: { type: Array, required: false},
-  numAttempts: { type: Number, required: false},
+  numAttempts: { type: Number, required: false },
+  phoneNumber: { type: Number, required: false },
   dateOfBirth: {type:Date, required: true},
   cart: {
     items: [

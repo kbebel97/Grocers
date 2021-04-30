@@ -8,7 +8,7 @@
         <style>
             form {
                 border-style: double;
-                height: 80%;
+                height: auto;
                 margin: 1% 1% 1% 1%;
                 padding: 1%;
             }
@@ -19,11 +19,6 @@
 
         <form #empRef="ngForm" (ngSubmit)="resetPassword(empRef.value)">
             <h1><b>Edit Employee</b></h1>
-            <h3>
-                Username
-                <br/>
-                <input type="text" name="name" [(ngModel)]="name" required/>
-            </h3>
             <h3>
                 Current Password
                 <br/>
@@ -39,8 +34,8 @@
                 <br/>
                 <input type="password" name="newPassword2" [(ngModel)]="newPassword2" required/>
             </h3>
-            <input type="reset" value="Clear"/>
-            <input type="submit" value="Reset Password"/>
+            <input type="reset" value="Clear" style="margin: 2px;"/>
+            <input type="submit" value="Reset Password" style="margin: 2px;" [disabled]="!empRef.form.valid"/>
             <div>
                 {{message}}
             </div>

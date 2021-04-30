@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/Product.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProductService {
 
   private baseUrl = 'http://localhost:9090/product';
@@ -18,6 +16,30 @@ export class ProductService {
 
   getProductList(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.baseUrl}/products`)
+  }
+
+  getProducts() {
+    return this.http.get<{message: string, products: any}>("http://localhost:9090/product/products");
+  }
+
+  myRecentPurchases(){
+
+  }
+
+  recentPurchases(){
+
+  }
+
+  under25(){
+
+  }
+
+  under50(){
+
+  }
+
+  under100(){
+
   }
 
 

@@ -16,13 +16,13 @@ export class UnlockService {
     return this.http.get<{message: String, userRequests: any}>("http://localhost:9090/userRequest/getRequests");
   }
 
-  unlockUsers(updatedRequests: Array<userRequest>, userIds: Array<string>){
-    let userIDs_requestIDS = {
-      updatedRequests: updatedRequests,
-      userIds: userIds
-    };
-    return this.http.post<{message: String, fetchedRequests: any}>('http://localhost:9090/userRequest/unlockAccounts', userIDs_requestIDS);
-  }
+  // unlockUsers(updatedRequests: Array<userRequest>, userIds: Array<string>){
+  //   let userIDs_requestIDS = {
+  //     updatedRequests: updatedRequests,
+  //     userIds: userIds
+  //   };
+  //   return this.http.post<{message: String, fetchedRequests: any}>('http://localhost:9090/userRequest/unlockAccounts', userIDs_requestIDS);
+  // }
 
   getNewest(){
     return this.http.get<{message: String, userRequests: any}>("http://localhost:9090/userRequest/getLatestRequests");
@@ -35,5 +35,8 @@ export class UnlockService {
 
   search(email : string){
     return this.http.get<{message: String, userRequests: any}>("http://localhost:9090/userRequest/search/" + email);
+  }
+  unlockUsers(userIds_userRequests){
+    return this.http.post<{message: String, fetchedRequests: any}>('http://localhost:9090/userRequest/unlockAccounts', userIds_userRequests);
   }
 }
