@@ -9,7 +9,6 @@
       <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Date</div></th>
       <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Email</div></th>
       <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>Description</div></th>
-      <!-- <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: center; align-items: center;"><div>status</div></th> -->
       <th class="col" style="padding: 0; text-align: center; display: flex; justify-content: flex-end; align-items: center;">
         <form [formGroup]="searchRef" class="example" (ngSubmit)="search()">
           <input type="text" placeholder="Email Search" formControlName="email" >
@@ -19,7 +18,7 @@
     </tr>
   </thead>
     <!-- <button (click)="check()">Hello</button> -->
-  <!-- <button (click)="postDummy()">post dummy</button> -->
+  <button (click)="postDummy()">post dummy</button>
   <tbody style="flex-grow : 1; overflow-y: scroll; display:block;  background-color: rgba(226, 248, 231, 0.97);" *ngIf="userRequests.length != 0">
     <button *ngFor="let request of userRequests; let i = index" style="width: 100%; border: none; outline: none; padding: 0;" (click)="unlock(request, i)" #tbody [ngStyle]="{backgroundColor: i % 2 !== 0 ? 'rgba(226, 248, 231, 0.97)' : 'rgba(190, 239, 200, 0.97)'}">
       <tr class="row" style="padding-top: 10px; padding-bottom: 10px; margin: 0;" >

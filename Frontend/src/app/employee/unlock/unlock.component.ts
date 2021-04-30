@@ -1,7 +1,6 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { User } from 'src/app/models/User.model';
 import { userRequest } from 'src/app/models/userRequest.model';
 import { UnlockService } from './unlock.service';
 
@@ -15,9 +14,7 @@ export class UnlockComponent implements OnInit {
 
   @ViewChildren('checkbox') components: QueryList<MatCheckbox>;
 
-  userIds : Array<string>= [];
   userRequests : Array<userRequest> = [];
-  // updatedRequests : Array<userRequest> = [];
   updatedRequests : Array<string> = [];
   loading: boolean  = false;
   updatedIds: Array<string> = [];
@@ -38,11 +35,6 @@ export class UnlockComponent implements OnInit {
   unlock(request_ : userRequest, i : number){
     if(this.components.toArray()[i].checked == true){
       this.components.toArray()[i].checked = false;
-      console.log(this.updatedRequests.indexOf(request_));
-      // if(this.updatedRequests.indexOf(request_)!=-1){
-      //     this.userIds.splice(this.userIds.indexOf(request_.userId), 1)
-      //     this.updatedRequests.splice(this.updatedRequests.indexOf(request_), 1);
-      // console.log(this.updatedRequests.indexOf(request_._id));
       if(this.updatedRequests.indexOf(request_._id)!=-1){
           this.updatedRequests.splice(this.updatedRequests.indexOf(request_._id), 1);
           this.updatedIds.splice(this.updatedIds.indexOf(request_.userId), 1);
@@ -50,9 +42,6 @@ export class UnlockComponent implements OnInit {
     }
     else {
       this.components.toArray()[i].checked = true;
-      // if(this.updatedRequests.indexOf(request_)==-1){
-      //   this.userIds.push(request_.userId);
-      //   this.updatedRequests.push(request_);
       if(this.updatedRequests.indexOf(request_._id)==-1){
         this.updatedRequests.push(request_._id);
         this.updatedIds.push(request_.userId);
@@ -61,23 +50,18 @@ export class UnlockComponent implements OnInit {
   }
 
   unlockAccounts(){
-    console.log(this.updatedRequests);
-    console.log(this.userIds);
     this.loading = true;
-    // this.UnlockService.unlockUsers(this.updatedRequests, this.userIds).subscribe((result)=> {
-    //   this.userRequests = result.fetchedRequests;
-    //   console.log(result.message);
-    //   this.loading = false;
     let userIds_userRequests = {
       updatedIds : this.updatedIds,
-      userRequests : this.userRequests
+      updatedRequests : this.updatedRequests
     }
     this.UnlockService.unlockUsers(userIds_userRequests).subscribe((result)=> {
       console.log(result.message);
       this.userRequests = result.fetchedRequests;
+      this.loading = false;
     })
     this.updatedRequests.splice(0, this.updatedRequests.length);
-    this.userIds.splice(0, this.userIds.length);
+    this.updatedIds.splice(0, this.updatedIds.length);
   }
 
   search(){
@@ -89,7 +73,7 @@ export class UnlockComponent implements OnInit {
         this.userRequests = result.userRequests;
         this.loading = false;
         this.updatedRequests.splice(0, this.updatedRequests.length);
-        this.userIds.splice(0,this.userIds.length);
+        this.updatedIds.splice(0,this.updatedIds.length);
       })
     }
     this.searchRef.reset();
@@ -101,7 +85,7 @@ export class UnlockComponent implements OnInit {
 
   getNewest(){
     this.updatedRequests.splice(0, this.updatedRequests.length);
-    this.userIds.splice(0,this.userIds.length);
+    this.updatedIds.splice(0,this.updatedIds.length);
     this.loading = true;
     this.UnlockService.getNewest().subscribe((result)=> {
       console.log(result.message);
@@ -112,7 +96,7 @@ export class UnlockComponent implements OnInit {
 
   getOldest(){
     this.updatedRequests.splice(0, this.updatedRequests.length);
-    this.userIds.splice(0,this.userIds.length);
+    this.updatedIds.splice(0,this.updatedIds.length);
     this.loading = true;
     this.UnlockService.getOldest().subscribe((result)=> {
       console.log(result.message);
