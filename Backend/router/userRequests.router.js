@@ -10,7 +10,7 @@ router.post("/unlockAccounts", userRequestsController.unlockAccounts);
 router.get("/getLatestRequests", userRequestsController.getLatestRequests);
 router.get("/getOldestRequests", userRequestsController.getOldestRequests);
 router.post("/logUserRequest", userRequestsController.postRequest);
-
+router.post("/postRequest", userRequestsController.postRequest);
 
 
 

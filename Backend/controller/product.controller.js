@@ -1,7 +1,6 @@
 let ProductModel = require("../model/product.model.js");
 
 let save = (req, res, next) => {
-
     const product = new ProductModel({
         name: req.body.name,
         price: req.body.price,

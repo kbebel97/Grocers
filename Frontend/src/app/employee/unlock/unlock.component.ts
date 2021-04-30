@@ -16,7 +16,8 @@ export class UnlockComponent implements OnInit {
   @ViewChildren('checkbox') components: QueryList<MatCheckbox>;
 
   userRequests : Array<userRequest> = [];
-  updatedRequests : Array<userRequest> = [];
+  updatedRequests : Array<string> = [];
+  updatedIds: Array<string> = [];
   constructor(private UnlockService : UnlockService) { }
 
   searchRef=new FormGroup({
@@ -33,22 +34,29 @@ export class UnlockComponent implements OnInit {
   unlock(request_ : userRequest, i : number){
     if(this.components.toArray()[i].checked == true){
       this.components.toArray()[i].checked = false;
-      console.log(this.updatedRequests.indexOf(request_));
-      if(this.updatedRequests.indexOf(request_)!=-1){
-          this.updatedRequests.splice(this.updatedRequests.indexOf(request_), 1);
+      console.log(this.updatedRequests.indexOf(request_._id));
+      if(this.updatedRequests.indexOf(request_._id)!=-1){
+          this.updatedRequests.splice(this.updatedRequests.indexOf(request_._id), 1);
+          this.updatedIds.splice(this.updatedIds.indexOf(request_.userId), 1);
       }
     }
     else {
       this.components.toArray()[i].checked = true;
-      if(this.updatedRequests.indexOf(request_)==-1){
-        this.updatedRequests.push(request_);
+      if(this.updatedRequests.indexOf(request_._id)==-1){
+        this.updatedRequests.push(request_._id);
+        this.updatedIds.push(request_.userId);
       }
     };
   }
 
   unlockAccounts(){
-    this.UnlockService.unlockUsers(this.updatedRequests).subscribe((result)=> {
+    let userIds_userRequests = {
+      updatedIds : this.updatedIds,
+      userRequests : this.userRequests
+    }
+    this.UnlockService.unlockUsers(userIds_userRequests).subscribe((result)=> {
       console.log(result.message);
+      this.userRequests = result.fetchedRequests;
     })
   }
 
@@ -65,10 +73,19 @@ export class UnlockComponent implements OnInit {
   postDummy(){
     let userRequest : userRequest = {
       _id: "0",
-      userId : "60898d37d33e6a28c8a30231",
+      userId : "608b648027230a4828b46b40",
       userName : "testuser",
       email : "testuser",
       description : "hello, this is a description",
+      date: new Date()
+    }
+
+    let userRequest2 : userRequest = {
+      _id: "01",
+      userId : "608b66f8ca54a05390fcaef6",
+      userName : "testuser2",
+      email : "testuser2",
+      description : "hello, this is a description2",
       date: new Date()
     }
 

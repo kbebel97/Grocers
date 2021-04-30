@@ -32,10 +32,9 @@ const routes: Routes = [
   { path: "\prodPortal", component: ProductNavComponent, children: [
       { path: 'products', component: ProductsComponent },
       { path: 'cart', component: CartComponent },
-      { path: 'staus', component: UserOrderStatusComponent },
+      { path: 'status', component: UserOrderStatusComponent },
       { path: 'profile', component: UserEditComponent },
-      { path: 'funds', component: UserFundsComponent },
-
+      { path: 'funds', component: UserFundsComponent }
     ]
   },
 

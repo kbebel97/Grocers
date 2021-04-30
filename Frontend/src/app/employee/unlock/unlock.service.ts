@@ -16,7 +16,7 @@ export class UnlockService {
     return this.http.get<{message: String, userRequests: any}>("http://localhost:9090/userRequest/getRequests");
   }
 
-  unlockUsers(updatedRequests: Array<userRequest>){
-    return this.http.post<{message: String}>('http://localhost:9090/userRequest/unlockAccounts', updatedRequests);
+  unlockUsers(userIds_userRequests){
+    return this.http.post<{message: String, fetchedRequests: any}>('http://localhost:9090/userRequest/unlockAccounts', userIds_userRequests);
   }
 }

@@ -41,35 +41,32 @@ let getRequests = (req, res, next) => {
 }
 
 let unlockAccounts = (req, res, next) => {
-    req.body.forEach(updatedRequest => {
-        let fetchedUser_;
-        UserModel.find({'_id': updatedRequest.userId}).then(fetchedUser => {
-            fetchedUser_ = fetchedUser; 
-            return updatedRequest.userId
-        })
-        .then((userId)=> {
-            let updatedFetchedUser = new UserModel({
-                email : fetchedUser_.email,
-                userName : fetchedUser_.userName,
-                shippingAddresses : fetchedUser_.shippingAddresses,
-                password : fetchedUser_.password,
-                numAttempts: 0,
-                locked : false,
-                firstName :fetchedUser_.firstName,
-                lastName: fetchedUser_.lastName
+    console.log(req.body.updatedIds);
+    UserModel.find().where('_id').in(req.body.updatedIds).then((users)=> {
+        users.forEach((fetchedUser)=> {
+            let updatedUser = new UserModel({
+                cart:  fetchedUser.cart,
+                shippingAddresses: fetchedUser.shippingAddresses,
+                _id: fetchedUser._id,
+                email: fetchedUser.email,
+                userName: fetchedUser.userName,
+                firstName: fetchedUser.firstName,
+                lastName: fetchedUser.lastName,
+                paymentMethods: fetchedUser.paymentMethods,
+                dateOfBirth: fetchedUser.dateOfBirth,
+                numAttempts: 0
             })
-            UserModel.updateOne({_id : userId}, updatedFetchedUser).then(()=>{
-                userRequestsModel.deleteOne({_id : updatedRequest._id }).then(()=>{
-                })
+            UserModel.updateOne({_id: fetchedUser._id}, updatedUser).then(()=> {
+
             })
         })
-    })
-    userRequestsModel.find({}).then((updatedRequestsList)=> {
-        res.status(200).json({
-            message: 'Unlocked Accounts!', fetchedRequests: updatedRequestsList
+    }).then(userRequestsModel.find().where('_id').in(req.body.userRequests).deleteOne().then(()=> {
+            userRequestsModel.find({}).then((updatedRequestsList)=> {
+                res.status(200).json({
+                message: 'Unlocked Accounts!', fetchedRequests: updatedRequestsList
           });
     })
-
+    }))
 }
 
 let getLatestRequests = (req, res, next) => {

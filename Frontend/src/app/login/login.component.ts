@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
 
         if (this.loginSuccess) {
           //Give the routing path of user
-          this.router.navigate(['/prodPortal/products']);
+          this.router.navigate(['./prodPortal/products']);
           console.log("Welcome to user portal");
         } else if (this.lockedUser) {
           console.log("The user is locked")
