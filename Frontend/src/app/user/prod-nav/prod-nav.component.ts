@@ -8,10 +8,13 @@ import { Router } from '@angular/router';
 })
 export class ProductNavComponent implements OnInit {
 
+  username : string;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.goToAddProductComponent();
+    this.username = JSON.parse(sessionStorage.loginObject)["userName"];
   }
 
   goToAddProductComponent() {
@@ -21,5 +24,6 @@ export class ProductNavComponent implements OnInit {
   goToListProductsComponent() {
     this.router.navigate(['/prodPortal/cart']);
   }
+
 
 }

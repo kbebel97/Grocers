@@ -15,13 +15,13 @@ import { DeleteEmployeeComponent } from './admin/delete-employee/delete-employee
 import { GenerateReportsComponent } from './admin/generate-reports/generate-reports.component';
 import { LoginComponent } from './login/login.component';
 import { UserSignupComponent } from './signup/user-signup.component';
-import { ProductsComponent } from './user/products/products.component';
-import { ProductNavComponent } from './user/prod-nav/prod-nav.component';
-import { CartComponent } from './user/cart/cart.component';
 import { RaiseTicketComponent } from './user/raise-ticket/raise-ticket.component';
 import { UserOrderStatusComponent } from './user/user-order-status/user-order-status.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserFundsComponent } from './user/user-funds/user-funds.component';
+import { ProductNavComponent } from './user/prod-nav/prod-nav.component';
+import { ProductsComponent } from './user/products/products.component';
+import { CartComponent } from './user/cart/cart.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "\login", pathMatch: "full" },
@@ -32,10 +32,9 @@ const routes: Routes = [
   { path: "\prodPortal", component: ProductNavComponent, children: [
       { path: 'products', component: ProductsComponent },
       { path: 'cart', component: CartComponent },
-      { path: 'staus', component: UserOrderStatusComponent },
+      { path: 'status', component: UserOrderStatusComponent },
       { path: 'profile', component: UserEditComponent },
-      { path: 'funds', component: UserFundsComponent },
-
+      { path: 'funds', component: UserFundsComponent }
     ]
   },
 
